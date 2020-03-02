@@ -1,6 +1,7 @@
 ###################
 # compiled source #
 ###################
+*.sqlite3
 *.com
 *.class
 *.dll
