@@ -164,6 +164,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\login.cshtml" />
     <Content Include="Views\Home\Items.cshtml" />
+    <Content Include="Views\Home\Item.cshtml" />
+    <Content Include="Views\Home\basker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

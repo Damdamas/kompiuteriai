@@ -38,5 +38,11 @@ namespace komp.Controllers
 
             return View();
         }
+        public ActionResult Item()
+        {
+            ViewBag.Message = "Your login page";
+
+            return View();
+        }
     }
 }
