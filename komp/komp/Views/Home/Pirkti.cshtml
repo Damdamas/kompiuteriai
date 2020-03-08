@@ -1,0 +1,363 @@
+﻿
+@{
+    ViewBag.Title = "Pirkti";
+}
+
+<h2>header</h2>
+
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://www.kompiuterija.lt/checkout3/ -->
+<html class="">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        .js-slide-hidden {
+            position: absolute !important;
+            left: -9999px !important;
+            top: -9999px !important;
+            display: block !important
+        }
+    </style>
+
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-KTZFP6"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KTZFP6');</script>
+    <!-- End Google Tag Manager -->
+    <style type="text/css">
+        .fancybox-margin {
+            margin-right: 17px;
+        }
+    </style>
+    <style></style>
+</head>
+
+<body style="padding: 0px 0px 100px;">
+    <div id="wrapper">
+
+        <style>
+
+            .shipping-wrapper-holder {
+                margin-left: 24px !important;
+            }
+        </style>
+        <span id="criteo-data" style="display: none;">[{"price": 61.0, "id": 8283957, "quantity": 1}]</span>
+
+        <main id="main" class="white">
+            <form action="https://www.kompiuterija.lt/checkout3/" id="checkout-form" method="post">
+                <div id="paslaugos_lt_a" style="display: none; max-width: 400px; padding: 32px;" class="lightbox">
+                    <a href="https://www.kompiuterija.lt/checkout3/#" class="close"></a>
+                    <h3>Sąlygos</h3>
+                    <p>
+                        Paslaugos.lt portale bus paskelbta užklausa dėl prekės pajungimo paslaugų.
+                        Gausite meistrų pasiūlymų.
+                        Išsirinksite tinkamiausią.
+                        Meistrams bus matomi Jūsų asmeniniai duomenys (vardas, el. paštas, telefono nr.).
+                    </p>
+                </div>
+
+                <div id="paslaugos_lt_b" style="display: none; max-width: 400px; padding: 32px;" class="lightbox">
+                    <a href="https://www.kompiuterija.lt/checkout3/#" class="close"></a>
+                    <h3>Sąlygos</h3>
+                    <p>
+                        Paslaugos.lt portale bus paskelbta užklausa dėl prekės pakabinimo paslaugų.
+                        Gausite meistrų pasiūlymų. Išsirinksite tinkamiausią.
+                        Meistrams bus matomi Jūsų asmeniniai duomenys (vardas, el. paštas, telefono nr.).
+                    </p>
+                </div>
+
+                <div id="paslaugos_lt_c" style="display: none; max-width: 400px; padding: 32px;" class="lightbox">
+                    <a href="https://www.kompiuterija.lt/checkout3/#" class="close"></a>
+                    <h3>Sąlygos</h3>
+                    <p>
+                        Paslaugos.lt portale bus paskelbta užklausa dėl fotografijos pamokų.
+                        Gausite mokytojų pasiūlymų.
+                        Išsirinksite tinkamiausią. Mokytojams bus matomi Jūsų asmeniniai duomenys (vardas, el. paštas, telefono nr.).
+                    </p>
+                </div>
+    </div>
+
+    <div class="content">
+
+
+
+
+
+
+        <div class="form-box" style="margin-top: 20px;">
+            <input class="input" type="hidden" name="csrfmiddlewaretoken" value="VcPVAeU8VZObFv98CjuSg4WZT7RrFMmg">
+
+            <div class="shop-info" data-basket_id="2020274">
+
+
+
+                <div class="section-header title user-info"><strong>Vartotojo informacija</strong></div>
+                <div class="user-card">
+
+
+                    <div class="row">
+
+                        <div class="col input-with-label row">
+                            <label for="id_user-name">Vardas, Pavardė</label>
+                            <input id="id_user-name" maxlength="80" name="user-name" type="text">
+
+                            <span class="helptext"></span>
+                        </div>
+
+
+                        <div class="col input-with-label row">
+                            <label for="id_user-email">El. paštas</label>
+                            <input id="id_user-email" maxlength="120" name="user-email" type="text">
+
+                            <span class="helptext"></span>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col input-with-label row  show">
+                            <label for="id_user-phone">Telefonas</label>
+                            <input id="id_user-phone" maxlength="15" name="user-phone" type="text" value="+3706">
+
+                            <span class="helptext"></span>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col flex company-check">
+                            <span class="jcf-checkbox jcf-unchecked"><span></span><input id="id_user-company" name="user-company" type="checkbox" style="position: absolute; height: 100%; width: 100%; opacity: 0; margin: 0px;"></span>
+                            <label class="normal" for="id_user-company">Perka įmonė?</label>
+                        </div>
+                    </div>
+                    <div class="show-firm" style="display: none;">
+                        <div class="row">
+
+                            <div class="col input-with-label row">
+                                <label for="id_user-company_name">Įmonės pavadinimas</label>
+                                <input id="id_user-company_name" maxlength="120" name="user-company_name" type="text">
+
+                                <span class="helptext"></span>
+                            </div>
+
+
+                            <div class="col input-with-label row">
+                                <label for="id_user-company_code">Įmonės kodas</label>
+                                <input id="id_user-company_code" maxlength="30" name="user-company_code" type="text">
+
+                                <span class="helptext"></span>
+                            </div>
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col input-with-label row">
+                                <label for="id_user-company_pvm">Įmonės pvm kodas</label>
+                                <input id="id_user-company_pvm" maxlength="14" name="user-company_pvm" onkeydown="return (event.keyCode!=32);" style="text-transform: uppercase;" type="text">
+
+                                <span class="helptext">Palikite tuščią, jeigu ne PVM mokėtojas</span>
+                            </div>
+
+                            <div class="col flex input-with-label show">
+                                <span class="jcf-checkbox jcf-unchecked"><span></span><input id="id_user-company_is_budgetary_institution" name="user-company_is_budgetary_institution" type="checkbox" style="position: absolute; height: 100%; width: 100%; opacity: 0; margin: 0px;"></span>
+                                <label class="normal" for="id_user-company_is_budgetary_institution">Perka biudžetinė įstaiga?</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="shop-row">
+                    <div class="shop-col">
+                        <div class="box shipping_method_wrapper">
+                            <div class="row">
+
+
+                                <div class="section-header title delivery">
+                                    <strong>Pristatymas</strong>
+                                    <a href="https://www.kompiuterija.lt/info/pristatymas/" style="display:inline-block; position: absolute; right: 0; font-size: 14px;" target="_blank">Daugiau apie pristatymus</a>
+                                </div>
+
+
+                                <div class="radio-with-label ">
+                                    <ul id="id_1-shipping_method">
+                                        <li><label for="id_1-shipping_method_0"><span class="jcf-radio jcf-unchecked"><input class="shipping_method_choices" data-shipping-method-code="shop" id="id_1-shipping_method_0" name="1-shipping_method" type="radio" value="1" style="position: absolute; opacity: 0;"><span></span></span> <span>Atsiėmimas "Kompiuterija" parduotuvėje</span> <span style="float:right">0.00 €</span></label><div class="shop-wrapper-holder shipping-wrapper-holder"></div></li>
+                                        <li><label for="id_1-shipping_method_1"><span class="jcf-radio jcf-unchecked"><input class="shipping_method_choices" data-shipping-method-code="courier" id="id_1-shipping_method_1" name="1-shipping_method" type="radio" value="2" style="position: absolute; opacity: 0;"><span></span></span> <span>Atsiėmimas iš kurjerio</span> <span style="float:right">3.90 €</span></label><div class="courier-wrapper-holder shipping-wrapper-holder"></div></li>
+                                        <li><label for="id_1-shipping_method_2"><span class="jcf-radio jcf-unchecked"><input class="shipping_method_choices" data-shipping-method-code="lpe_terminal" id="id_1-shipping_method_2" name="1-shipping_method" type="radio" value="106" style="position: absolute; opacity: 0;"><span></span></span> <span>Atsiėmimas LP Express paštomate</span> <span style="float:right">1.89 €</span></label><div class="lpe_terminal-wrapper-holder shipping-wrapper-holder"></div></li>
+                                        <li><label for="id_1-shipping_method_3"><span class="jcf-radio jcf-unchecked"><input class="shipping_method_choices" data-shipping-method-code="lpe_post_office" id="id_1-shipping_method_3" name="1-shipping_method" type="radio" value="110" style="position: absolute; opacity: 0;"><span></span></span> <span>Atsiėmimas Lietuvos Pašto skyriuje (ilgiau +2 d.d.)</span> <span style="float:right">1.63 €</span></label><div class="lpe_post_office-wrapper-holder shipping-wrapper-holder"></div></li>
+                                        <li><label for="id_1-shipping_method_4"><span class="jcf-radio jcf-unchecked"><input class="shipping_method_choices" data-shipping-method-code="dpd_terminal" id="id_1-shipping_method_4" name="1-shipping_method" type="radio" value="128" style="position: absolute; opacity: 0;"><span></span></span> <span>DPD atsiėmimo taškas</span> <span style="float:right">1.89 €</span></label><div class="dpd_terminal-wrapper-holder shipping-wrapper-holder"></div></li>
+                                    </ul>
+                                    <!-- <label for="id_1-shipping_method_0">Pristatymo būdas</label> -->
+
+                                </div>
+
+
+                                <div class="input-with-label row">
+                                    <label for="id_1-city">Miestas</label>
+                                    <input id="id_1-city" maxlength="80" name="1-city" type="text">
+
+                                    <span class="helptext"></span>
+                                </div>
+
+
+                                <div class="input-with-label row">
+                                    <label for="id_1-address">Adresas</label>
+                                    <input id="id_1-address" maxlength="200" name="1-address" placeholder="" type="text">
+
+                                    <span class="helptext"></span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="input-with-label row">
+                                <label for="id_1-comment">Komentarai</label>
+                                <input id="id_1-comment" name="1-comment" type="text">
+
+                                <span class="helptext"></span>
+                            </div>
+
+
+                            <p style="display:none" id="selected_shipping_method">None</p>
+                        </div>
+                    </div>
+                    <div class="box payment_method_wrapper">
+                        <div class="row">
+
+
+
+                        </div>
+
+                        <div class="payment_description_wrapper">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-header"></div>
+        <div class="price_breakdown shop-col">
+
+            <ul class="list">
+                <li>
+                    <span class="title">
+
+                        Suma
+
+                    </span>
+                    <span class="val">
+                        61 €
+                    </span>
+                </li>
+
+
+                <li class="open-close-inlist ">
+                    <a href="javascript:void(0);" class="open-inlist">Įvesk nuolaidos kodą</a>
+                    <div class="drop-inlist js-slide-hidden">
+                        <input class="input" type="hidden" name="csrfmiddlewaretoken" value="VcPVAeU8VZObFv98CjuSg4WZT7RrFMmg">
+                        <input class="input" type="hidden" name="voucher_code_for_basket_id" value="2020274">
+                        <input type="text" name="voucher_code" placeholder="Kodas" style="color: #000 !important;" value="">
+                        <span class="discount-progress"></span>
+                        <button class="submit_voucher" type="button">Pritaikyti</button>
+                    </div>
+
+                </li>
+
+
+
+
+
+                <li>
+                    <span class="title">Pristatymas</span>
+                    <span class="val">
+
+
+                        0 € arba 1,63 €
+
+
+                    </span>
+                </li>
+
+                <li class="total">
+                    <strong class="title">Iš viso</strong>
+                    <strong class="val">
+                        61 €
+                    </strong>
+                </li>
+
+                <span style="position:relative; font-size:12px; top: -35px; float:right;">
+                    (be pristatymo mokesčio)
+                </span>
+
+            </ul>
+
+        </div>
+    </div>
+
+    </div>
+
+    <div class="contact-box">
+        <div class="info-item">
+            <strong class="phone">Ask yo mama</strong>
+            <p>Informacija telefonu</p>
+        </div>
+        <div class="info-item">
+            <strong class="guarantee">40 dienų</strong>
+            <a href="https://www.kompiuterija.lt/info/grazinimas-garantijos/">
+                <p>Grąžinimo garantija</p>
+            </a>
+        </div>
+    </div>
+
+    <span class="title">
+
+
+        <span>Bendra kaina su pristatymu</span>
+
+
+    </span>
+
+    <strong class="price-target"> 61 €</strong>
+
+
+
+
+
+
+
+    <div class="row">
+        <label>
+            <p>
+
+                <span style="display: inline-block; position: relative; top: 3px;">
+                    <span class="jcf-checkbox jcf-unchecked"><span></span><input id="id_user-agree_to_policy" name="user-agree_to_policy" type="checkbox" style="position: absolute; height: 100%; width: 100%; opacity: 0; margin: 0px;"></span>
+                </span>
+                Patvirtinu, kad susipažinau ir sutinku su kompiuterija.lt <a href="https://www.kompiuterija.lt/info/taisykles/" target="_blank">taisyklėmis</a> ir privatumo <a href="https://www.kompiuterija.lt/info/privatumo-politika/" target="_blank">politika</a>.
+            </p>
+        </label>
+    </div>
+
+    <div class="btn-box">
+        <button class="button next" type="submit" value="Submit">Atlikti užsakymą</button>
+        <button class="button prev" onclick="location.href=&#39;/basket3/&#39;; return false;">Grįžti į krepšelį</button>
+    </div>
+
+    </div>
+    </div>
+    </form>
+    </main>
+
+
+    </div>
+
+</body>
+</html>
