@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MySql.Data.MySqlClient;
 
 namespace komp.Controllers
 {
@@ -10,6 +11,20 @@ namespace komp.Controllers
     {
         public ActionResult Index()
         {
+
+            var xd = Server.MapPath("~/Assets/constants/connections.txt");
+                var lala = new Innit();
+                lala.Init(xd);
+                var lalalla = "dsadsad";
+            var database = "komiuteriu_komponentai";
+
+            string connectionString;
+            connectionString = "SERVER=" + lala.ConnectionHost + ";" + "DATABASE=" +
+            database + ";" + "UID=" + lala.ConnectionName + ";" + "PASSWORD=" + lala.ConnectionPw + ";";
+
+            var bb = new MySqlConnection(connectionString);
+            bb.Open();
+            bb.Close();
             return View();
         }
 
