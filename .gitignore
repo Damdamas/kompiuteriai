@@ -49,6 +49,7 @@ TestResults/
 *.rar
 *.tar
 *.zip
+constants.txt
 ######################
 # Logs and databases #
 ######################
