@@ -49,7 +49,7 @@ TestResults/
 *.rar
 *.tar
 *.zip
-constants.txt
+connections.txt
 ######################
 # Logs and databases #
 ######################
