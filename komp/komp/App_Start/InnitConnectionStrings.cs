@@ -6,7 +6,7 @@ using System;
 
 namespace komp
 {
-    public class Innit
+    public class InnitConnectionStrings
     {
 
         public string ConnectionName;
@@ -14,9 +14,9 @@ namespace komp
         public string ConnectionHost;
 
 
-        public void Init(string path)
+        public void Init()
         {
-            
+            string path = HttpContext.Current.Server.MapPath("~/Assets/constants/connections.txt");
             String line;
             using (StreamReader sr = new StreamReader(path))
             {

@@ -4,30 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MySql.Data.MySqlClient;
+using komp.Models;
+using komp.Assets.Services;
 
 namespace komp.Controllers
 {
+    
     public class HomeController : Controller
     {
+        //[MyAuthorizationFilter] sita uzdet ant tu metodu, kuriem reiks auth
         public ActionResult Index()
-        {
-
-            var xd = Server.MapPath("~/Assets/constants/connections.txt");
-                var lala = new Innit();
-                lala.Init(xd);
-                var lalalla = "dsadsad";
-            var database = "komiuteriu_komponentai";
-
-            string connectionString;
-            connectionString = "SERVER=" + lala.ConnectionHost + ";" + "DATABASE=" +
-            database + ";" + "UID=" + lala.ConnectionName + ";" + "PASSWORD=" + lala.ConnectionPw + ";";
-
-            var bb = new MySqlConnection(connectionString);
-            bb.Open();
-            bb.Close();
+        {  
             return View();
         }
-
+        [MyAuthorizationFilter]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -44,8 +34,8 @@ namespace komp.Controllers
         public ActionResult Login()
         {
             ViewBag.Message = "Your login page";
-
-            return View();
+            naudotojas acc = new naudotojas();
+            return View(acc);
         }
         public ActionResult Items()
         {

@@ -1,17 +1,25 @@
-﻿
+﻿@model komp.Models.naudotojas
 @{
     ViewBag.Title = "Prisijungti";
 }
 
 <h2>Prisijungti</h2>
-<body>  
-    <form action='@Url.Action("Items", "Home")' method="post" >
+<body>
+    <form action='@Url.Action("Login", "User")' method="post">
         <div class="container">
-            <label for="email"<b>Įveskite elektroninį paštą</b></label><br />
-            <input type="text" placeholder="Įveskite e.paštą" name="email" required /><br />
-            <label for="password"><b>Įveskite slaptažodį</b></label><br />
-            <input type="password" placeholder="Įveskite slaptažodį" name="passowrd" required><br />
-            <button class="btn btn-primary btn-lg" &raquo; type="submit">Prisijungti</button>
+           
+            <div class="editor-field">
+                <label>El. paštas</label>
+                @Html.EditorFor(model => model.elpastas)
+            </div>
+
+            <div class="editor-field">
+                <label>Slaptažodis</label>
+                @Html.EditorFor(model => model.slaptazodis)
+            </div>
+
+
+            <input type="submit" value="Submit" />
 
         </div>
     </form>
