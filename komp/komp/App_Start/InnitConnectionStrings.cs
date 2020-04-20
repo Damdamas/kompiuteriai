@@ -25,16 +25,6 @@ namespace komp
             ConnectionName = line.Split(';')[0];
             ConnectionPw = line.Split(';')[1];
             ConnectionHost = line.Split(';')[2];
-
-
-            //var database = "kompiuteriu_komponentai";
-
-            //string connectionString;
-            //connectionString = "SERVER=" + ConnectionHost + ";" + "DATABASE=" +
-            //database + ";" + "UID=" + ConnectionName+ ";" + "PASSWORD=" + ConnectionPw + ";";
-
-            //new MySqlConnection(connectionString);
-
         }
     }
 }

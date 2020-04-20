@@ -12,7 +12,11 @@ namespace komp.Controllers
         // GET: User
         public ActionResult Index()
         {
-            return View();
+            //pasiemam is duombazes
+            //sukuriam lista
+            //  |
+            //  V
+            return View("~/Views/Home/login.cshtml");
         }
         public ActionResult Register()
         {
@@ -30,6 +34,23 @@ namespace komp.Controllers
         public ActionResult Verify(naudotojas acc)
         {
             return View();
+        }
+        public ActionResult IndexRegister()
+        {
+            return View("Register");
+        }
+        [HttpPost]
+        public ActionResult Register(naudotojas acc)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "adfdghdghgdhgdhdgda");
+                return View("~/Views/User/Register.cshtml");
+            }
+            var db = new ApplicationDbUser();
+            db.CreateUser(acc);
+
+            return View("~/Views/User/Register.cshtml");
         }
 
     }

@@ -194,7 +194,6 @@
     <Compile Include="Assets\DbContext\ApplicationDbUser.cs" />
     <Compile Include="Assets\Services\MyAuthorizationFilter.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -245,6 +244,7 @@
     <Content Include="Views\Home\Basket.cshtml" />
     <Content Include="Views\Home\Pirkti.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Home\EditItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
