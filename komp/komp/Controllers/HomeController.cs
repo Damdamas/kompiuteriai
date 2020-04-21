@@ -17,7 +17,6 @@ namespace komp.Controllers
         {  
             return View();
         }
-        [MyAuthorizationFilter]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

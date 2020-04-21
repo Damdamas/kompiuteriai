@@ -5,15 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
 
-
 namespace komp.Assets.Services
 {
-    public class MyAuthorizationFilter : ActionFilterAttribute, IAuthenticationFilter
+    public class AdminAuthorizationFilter : ActionFilterAttribute, IAuthenticationFilter
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
             //Check Session is Empty Then set as Result is HttpUnauthorizedResult 
-            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["UserID"])))
+            if (Convert.ToString(filterContext.HttpContext.Session["Role"])!="administratorius")
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }

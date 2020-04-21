@@ -9,6 +9,16 @@
         position: absolute;
         right: 20%;
     }
+
+    #User {
+        position: absolute;
+        right: 20%;
+        top: 30%;
+        color: deepskyblue;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
 </style>
 <html>
 <head>
@@ -36,8 +46,18 @@
                     <li>@Html.ActionLink("Apie mus", "About", "Home")</li>
                     <li>@Html.ActionLink("Kontaktai", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Prekės", "Items", "Home")</li>
-                    <li id="login">@Html.ActionLink("Prisijungti", "Index", "User")</li>
-                    <li id="register">@Html.ActionLink("Registruotis", "Register", "User")</li>
+                    @{ if (Session["Role"] is null)
+                        {
+                            <li id="login">@Html.ActionLink("Prisijungti", "Index", "User")</li>
+                            <li id="register">@Html.ActionLink("Registruotis", "Register", "User")</li>
+                        }
+                        else if (Session["Role"].ToString() == "registruotas naudotojas" || Session["Role"].ToString() == "administratorius")
+                        {
+
+                            <li id="login">@Html.ActionLink("Atsijungti", "LogOut", "User")</li>
+                            <li id="User"> prisijungę kaip: @Session["Name"].ToString() </li>
+                        }
+                    }
                 </ul>
             </div>
         </div>

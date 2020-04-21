@@ -3,25 +3,65 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace komp.Models
 {
     public class naudotojas
     {
-        [Required(ErrorMessage = "Blogi duomenys")]
+        [Required(ErrorMessage = "Privalomas langelis")]
+        [RegularExpression(@"^\p{L}+$", ErrorMessage = "Varde gali būti tik raidės")]
+        [StringLength(50, MinimumLength = 1, ErrorMessage = "Vardas tarp: 1-50 simbolių ")]
+        [DisplayName("Vardas")]
         public string vardas { get; set; }
-        [Required(ErrorMessage = "Blogi duomenys")]
+
+
+        [DisplayName("Pavardė")]
+        [StringLength(50, MinimumLength = 1, ErrorMessage = "Pavardė tarp: 1-50 simbolių")]
+        [Required(ErrorMessage = "Privalomas langelis")]
+        [RegularExpression(@"^\p{L}+$", ErrorMessage = "Pavardėje gali būti tik raidės")]
         public string pavarde { get; set; }
-        [Required(ErrorMessage = "Blogi duomenys")]
+
+
+        [DisplayName("El. Paštas")]
+        [StringLength(254, MinimumLength = 6, ErrorMessage = "El. paštas tarp: 6-254 simbolių")]
+        [Required(ErrorMessage = "Privalomas langelis")]
+        [RegularExpression(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", ErrorMessage = "Blogas el. pašto formatas")]
         public string elpastas { get; set; }
-        [Required(ErrorMessage = "Blogi duomenys")]
+
+
+        [DisplayName("Slapyvardis")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Prisijungimo vardas tarp: 3-20 simbolių ")]
+        [Required(ErrorMessage = "Privalomas langelis")]
         public string prisijungimoVardas { get; set; }
-        [Required(ErrorMessage = "Blogi duomenys")]
+
+
+        [DisplayName("Slaptažodis")]
+        [Required(ErrorMessage = "Privalomas langelis")]
+        [StringLength(64, MinimumLength = 5, ErrorMessage = "Slaptažodis turi būti: 5-50 ilgio ")]
         public string slaptazodis { get; set; }
-        [Required(ErrorMessage = "Blogi duomenys")]
+
+
+        [DisplayName("Tel. Nr.")]
+        [StringLength(16, ErrorMessage = "Per daug simbolių Max-16")]
+        [RegularExpression(@"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$", ErrorMessage = "Neegzistuojantis telefono numeris")]
         public string telnumeris { get; set; }
+
+        [DisplayName("Adresas")]
+        [StringLength(1024, ErrorMessage = "Per daug simbolių adrese Max-1024")]
         public string adresas { get; set; }
+
+
         public string role { get; set; }
         public int id { get; set;}
+
+        public naudotojas SessionUser()
+        {
+            var usr = new naudotojas();
+            usr.role = role;
+            usr.vardas = vardas;
+            usr.pavarde = pavarde;
+            return usr;
+        }
     }
 }

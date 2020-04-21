@@ -1,26 +1,32 @@
 ﻿@model komp.Models.naudotojas
-@{
-    ViewBag.Title = "Prisijungti";
-}
 
-<h2>Prisijungti</h2>
-<body>
-    <form action='@Url.Action("Login", "User")' method="post">
-        <div class="container">
-           
-            <div class="editor-field">
-                <label>El. paštas</label>
-                @Html.EditorFor(model => model.elpastas)
+<h1>Prisijungimas</h1>
+
+@using (Html.BeginForm("Login", "User"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "Nepavyko prisijungti. Klaidingi prisijungimo duomenys.")
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.elpastas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.elpastas, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.elpastas, "", new { @class = "text-danger", required = "required" })
             </div>
-
-            <div class="editor-field">
-                <label>Slaptažodis</label>
-                @Html.EditorFor(model => model.slaptazodis)
-            </div>
-
-
-            <input type="submit" value="Submit" />
-
         </div>
-    </form>
-</body>
+        <div class="form-group">
+            @Html.LabelFor(model => model.slaptazodis, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.slaptazodis, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.slaptazodis, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Prisijungti" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}

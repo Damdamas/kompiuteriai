@@ -14,8 +14,7 @@ namespace komp
 {
     class ApplicationDbUser
     {
-       MySqlConnection connection;
-       public ApplicationDbUser()
+       MySqlConnection connection;  public ApplicationDbUser()
         {
 
             var conn = new InnitConnectionStrings();
@@ -34,6 +33,7 @@ namespace komp
             var comp = new MySqlCompiler();
             acc.role = "registruotas naudotojas";
             var query = new Query("naudotojas").AsInsert(acc);
+     
             
             var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
             connection.Open();
@@ -70,6 +70,46 @@ namespace komp
 
             return ieskomas;
         }
+        public bool EmailExists(naudotojas acc)
+        {
+            var comp = new MySqlCompiler();
+            var query = new Query("naudotojas").Where("elpastas", acc.elpastas);
+            var cc = comp.Compile(query).ToString();
+            var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
+            connection.Open();
+            var reader = command.ExecuteReader();
 
+            if (reader.HasRows)
+            {
+                connection.Close();
+                return true;
+            }
+            else
+            {
+                connection.Close();
+                return false;
+            }
+            
+            
+        }
+        public bool NameExists(naudotojas acc)
+        {
+            var comp = new MySqlCompiler();
+            var query = new Query("naudotojas").Where("PrisijungimoVardas", acc.prisijungimoVardas); ;
+            var cc = comp.Compile(query).ToString();
+            var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
+            connection.Open();
+            var reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                connection.Close();
+                return true;
+            }
+            else
+            {
+                connection.Close();
+                return false;
+            }
+        }
     }
 }
