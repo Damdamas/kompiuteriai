@@ -313,6 +313,11 @@
     </Compile>
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\enumTypes\enumItemType.cs" />
+    <Compile Include="Models\enumTypes\enumOrderStatus.cs" />
+    <Compile Include="Models\enumTypes\enumPayMethods.cs" />
+    <Compile Include="Models\enumTypes\enumPickUpMethods.cs" />
+    <Compile Include="Models\enumTypes\enumRole.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\tipai\ItemType.cs" />

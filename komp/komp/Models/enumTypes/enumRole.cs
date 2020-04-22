@@ -5,7 +5,10 @@ using System.Web;
 
 namespace komp.Models.enumTypes
 {
-    public class RoleType
+    public enum enumRole
     {
+        svečias,
+        registruotasNaudotojas,
+        administratorius
     }
 }

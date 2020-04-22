@@ -5,7 +5,9 @@ using System.Web;
 
 namespace komp.Models.enumTypes
 {
-    public class enumPayMethods
+    public enum enumPayMethods
     {
+        elbankininkyste,
+        atsiimantPrekes
     }
 }

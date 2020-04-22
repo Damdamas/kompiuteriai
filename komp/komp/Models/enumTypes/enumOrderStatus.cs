@@ -5,7 +5,12 @@ using System.Web;
 
 namespace komp.Models.enumTypes
 {
-    public class enumOrderStatus
+    public enum enumOrderStatus
     {
+        pateiktas,
+        priimtas,
+        supakuotas,
+        pristatytas,
+        užbaigtas
     }
 }

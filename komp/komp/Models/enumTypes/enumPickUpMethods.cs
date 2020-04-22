@@ -5,7 +5,10 @@ using System.Web;
 
 namespace komp.Models.enumTypes
 {
-    public class enumPickUpMethods
+    public enum enumPickUpMethods
     {
+        atsiimantParduotuvėje,
+        pristatytiĮNamus,
+        atsiimtiPašte
     }
 }

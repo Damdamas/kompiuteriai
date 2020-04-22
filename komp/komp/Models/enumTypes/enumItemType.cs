@@ -5,7 +5,20 @@ using System.Web;
 
 namespace komp.Models.enumTypes
 {
-    public class enumItemType
+    public enum enumItemType
     {
+       korupusas,
+       pagrindinėPlokštė,
+       procesorius,
+       vaizdoPlokštė,
+       ram,
+       atmintiesĮrenginys,
+       aušintuvas,
+       maitinimoBlokas,
+       monitorius,
+       pelė,
+       klaviatūra
+
     }
+   
 }
