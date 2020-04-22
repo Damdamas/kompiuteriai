@@ -19,6 +19,10 @@
         white-space: nowrap;
         overflow: hidden;
     }
+    #test {
+        position: absolute;
+        right: 50%;
+    }
 </style>
 <html>
 <head>
@@ -51,13 +55,17 @@
                             <li id="login">@Html.ActionLink("Prisijungti", "Index", "User")</li>
                             <li id="register">@Html.ActionLink("Registruotis", "Register", "User")</li>
                         }
-                        else if (Session["Role"].ToString() == "registruotas naudotojas" || Session["Role"].ToString() == "administratorius")
+                        else if (Session["Role"].ToString() == komp.Models.tipai.Role.User || Session["Role"].ToString() == komp.Models.tipai.Role.Admin)
                         {
-
+                            if (Session["Role"].ToString() == komp.Models.tipai.Role.Admin)
+                            {
+                                <li id="test">@Html.ActionLink("test item", "NewItem", "Item")</li>
+                            }
                             <li id="login">@Html.ActionLink("Atsijungti", "LogOut", "User")</li>
                             <li id="register">@Html.ActionLink("Redaguoti profilį", "EditProfileIndex", "User")</li>
                             <li id="User"> prisijungę kaip: @Session["Name"].ToString() </li>
                         }
+
                     }
                 </ul>
             </div>

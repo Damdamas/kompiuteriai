@@ -15,7 +15,8 @@ namespace komp
 {
     class ApplicationDbUser
     {
-       MySqlConnection connection;  public ApplicationDbUser()
+       MySqlConnection connection;
+        public ApplicationDbUser()
         {
 
             var conn = new InnitConnectionStrings();
@@ -29,7 +30,7 @@ namespace komp
 
             connection = new MySqlConnection(connectionString);
         }
-        public void UpdataUser(User acc, string pw = null)
+        public void UpdateUser(User acc, string pw = null)
         {
             var comp = new MySqlCompiler();
             object c;

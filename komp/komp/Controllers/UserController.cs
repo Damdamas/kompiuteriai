@@ -78,14 +78,14 @@ namespace komp.Controllers
             acc.role = sess.role;
             var db = new ApplicationDbUser();
             if (acc.slaptazodis is null)
-                db.UpdataUser(acc);
+                db.UpdateUser(acc);
             else
             {
                 byte[] data = System.Text.Encoding.ASCII.GetBytes(acc.slaptazodis);
                 data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
                 String hash = System.Text.Encoding.ASCII.GetString(data);
                 acc.slaptazodis = hash;
-                db.UpdataUser(acc, acc.slaptazodis);
+                db.UpdateUser(acc, acc.slaptazodis);
             }
             acc.slaptazodis = "";
             ViewBag.message5 = "5";
