@@ -311,9 +311,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\enums\ittypes.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\tipai\ItemType.cs" />
+    <Compile Include="Models\tipai\OrderStatus.cs" />
+    <Compile Include="Models\tipai\PayMethods.cs" />
+    <Compile Include="Models\tipai\PickUpMethod.cs" />
     <Compile Include="Models\tipai\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
