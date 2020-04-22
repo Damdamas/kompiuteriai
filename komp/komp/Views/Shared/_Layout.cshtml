@@ -12,7 +12,7 @@
 
     #User {
         position: absolute;
-        right: 20%;
+        right: 35%;
         top: 30%;
         color: deepskyblue;
         text-overflow: ellipsis;
@@ -55,6 +55,7 @@
                         {
 
                             <li id="login">@Html.ActionLink("Atsijungti", "LogOut", "User")</li>
+                            <li id="register">@Html.ActionLink("Redaguoti profilį", "EditProfileIndex", "User")</li>
                             <li id="User"> prisijungę kaip: @Session["Name"].ToString() </li>
                         }
                     }

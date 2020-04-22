@@ -302,13 +302,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Assets\DbContext\ApplicationDbUser.cs" />
     <Compile Include="Assets\Services\AdminAuthorizationFilter.cs" />
+    <Compile Include="Assets\Services\AnonymousAuthorizationFilter.cs" />
     <Compile Include="Assets\Services\UserAuthorizationFilter.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\naudotojas.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\tipai\ItemType.cs" />
+    <Compile Include="Models\tipai\Role.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -355,6 +359,7 @@
     <Content Include="Views\Home\Pirkti.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Home\EditItem.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

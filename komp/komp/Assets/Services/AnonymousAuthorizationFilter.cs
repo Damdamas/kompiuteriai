@@ -8,12 +8,12 @@ using komp.Models.tipai;
 
 namespace komp.Assets.Services
 {
-    public class AdminAuthorizationFilter : ActionFilterAttribute, IAuthenticationFilter
-    {
+    public class AnonymousAuthorizationFilter : ActionFilterAttribute, IAuthenticationFilter
+    { 
         public void OnAuthentication(AuthenticationContext filterContext)
         {
             //Check Session is Empty Then set as Result is HttpUnauthorizedResult 
-            if (Convert.ToString(filterContext.HttpContext.Session["Role"])!=Role.Admin)
+            if (!(filterContext.HttpContext.Session["Role"] is null))
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }

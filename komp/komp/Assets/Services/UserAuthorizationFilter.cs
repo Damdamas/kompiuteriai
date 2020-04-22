@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
+using komp.Models.tipai;
 
 
 namespace komp.Assets.Services
@@ -13,7 +14,7 @@ namespace komp.Assets.Services
         public void OnAuthentication(AuthenticationContext filterContext)
         {
             //Check Session is Empty Then set as Result is HttpUnauthorizedResult 
-            if (Convert.ToString(filterContext.HttpContext.Session["Role"]) != "registruotas naudotojas")
+            if (Convert.ToString(filterContext.HttpContext.Session["Role"]) != Role.User)
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }

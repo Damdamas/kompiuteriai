@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace komp.Models
 {
-    public class naudotojas
+    public class User
     {
         [Required(ErrorMessage = "Privalomas langelis")]
         [RegularExpression(@"^\p{L}+$", ErrorMessage = "Varde gali būti tik raidės")]
@@ -43,11 +43,13 @@ namespace komp.Models
 
 
         [DisplayName("Tel. Nr.")]
+        [Required(ErrorMessage = "Privalomas langelis")]
         [StringLength(16, ErrorMessage = "Per daug simbolių Max-16")]
         [RegularExpression(@"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$", ErrorMessage = "Neegzistuojantis telefono numeris")]
         public string telnumeris { get; set; }
 
         [DisplayName("Adresas")]
+        [Required(ErrorMessage = "Privalomas langelis")]
         [StringLength(1024, ErrorMessage = "Per daug simbolių adrese Max-1024")]
         public string adresas { get; set; }
 
@@ -55,9 +57,10 @@ namespace komp.Models
         public string role { get; set; }
         public int id { get; set;}
 
-        public naudotojas SessionUser()
+        public User SessionUser()
         {
-            var usr = new naudotojas();
+            var usr = new User();
+            usr.id = id;
             usr.role = role;
             usr.vardas = vardas;
             usr.pavarde = pavarde;

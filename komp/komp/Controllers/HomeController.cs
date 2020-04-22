@@ -30,10 +30,11 @@ namespace komp.Controllers
 
             return View();
         }
+        [AnonymousAuthorizationFilter]
         public ActionResult Login()
         {
             ViewBag.Message = "Your login page";
-            naudotojas acc = new naudotojas();
+            User acc = new User();
             return View(acc);
         }
         public ActionResult Items()
