@@ -13,6 +13,7 @@ namespace komp.Models
 
         public string elpastas { get; set; }
 
+        public string telnumeris { get; set; }
         public string adresas { get; set; }
 
         public DateTime data { get; set; }
@@ -22,5 +23,7 @@ namespace komp.Models
         public string mokejimas { get; set; }
 
         public string busena { get; set; }
+        
+        public string id { get; set; }
     }
 }

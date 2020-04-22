@@ -300,7 +300,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\InnitConnectionStrings.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Assets\DbContext\ApplicationDbCart.cs" />
+    <Compile Include="Assets\DbContext\ApplicationDbComment.cs" />
     <Compile Include="Assets\DbContext\ApplicationDbItem.cs" />
+    <Compile Include="Assets\DbContext\ApplicationDbOrder.cs" />
     <Compile Include="Assets\DbContext\ApplicationDbUser.cs" />
     <Compile Include="Assets\Services\AdminAuthorizationFilter.cs" />
     <Compile Include="Assets\Services\AnonymousAuthorizationFilter.cs" />

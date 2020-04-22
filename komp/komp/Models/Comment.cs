@@ -10,5 +10,6 @@ namespace komp.Models
         public DateTime sukurimoData { get; set; }
 
         public string turinys { get; set; }
+        public string id { get; set; }
     }
 }

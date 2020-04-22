@@ -12,6 +12,9 @@ namespace komp.Models
         public DateTime sukurimoData { get; set; }
         
         public bool patvirtintas { get; set; }
+        
+        public int[] prekes { get; set; }
 
+        public string id { get; set; }
     }
 }
