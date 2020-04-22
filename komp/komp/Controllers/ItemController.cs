@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using komp.Assets.DbContext;
 using komp.Assets.Services;
 using komp.Models;
+using komp.Models.tipai;
 
 namespace komp.Controllers
 {
@@ -15,6 +16,7 @@ namespace komp.Controllers
         public ActionResult CreateItem(Item item)
         {
             var db = new ApplicationDbItem();
+            item.tipas = ItemType.Cooler;
             db.CreateItem(item);
 
             return View("~/Views/Home/NewItem.cshtml");
