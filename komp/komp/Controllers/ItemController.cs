@@ -55,13 +55,6 @@ namespace komp.Controllers
             var db = new ApplicationDbItem();
             
             db.CreateItem(item,imgpath);
-
-
-
-
-
-
-
             return View("~/Views/Home/NewItem.cshtml");
         }
         [AdminAuthorizationFilter]
@@ -92,5 +85,19 @@ namespace komp.Controllers
             // after successfully uploading redirect the user
             return RedirectToAction("NewItem", "Item");
         }
+
+        public ActionResult Items()
+        {
+            var db = new ApplicationDbItem();
+            var list = db.GetItems(10);
+            return View("~/Views/Home/Items.cshtml",list);
+        }
+        public ActionResult Item(int id)
+        {
+            var db = new ApplicationDbItem();
+            var item = db.GetItemById(id);
+            return View("~/Views/Home/Item.cshtml",item);
+        }
+
     }
 }

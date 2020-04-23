@@ -36,7 +36,7 @@ namespace komp.Models
 
         public float reitingas { get; set; }
 
-
+        public string path { get; set; }
 
         [NotMapped]
         public HttpPostedFileBase itemPath { get; set; }

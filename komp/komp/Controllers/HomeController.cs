@@ -37,12 +37,6 @@ namespace komp.Controllers
             User acc = new User();
             return View(acc);
         }
-        public ActionResult Items()
-        {
-            ViewBag.Message = "Your login page";
-
-            return View();
-        }
         public ActionResult Item()
         {
             ViewBag.Message = "Your login page";

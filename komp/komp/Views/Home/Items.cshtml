@@ -1,7 +1,6 @@
-﻿
-@{
-    ViewBag.Title = "Items";
-}
+﻿@using komp.Models.tipai
+@using Microsoft.Ajax.Utilities
+@model IEnumerable<komp.Models.Item>
 
 <style>
     img {
@@ -15,30 +14,34 @@
         display: inline-block;
         vertical-align: top;
     }
+
     .mygtukas {
         position: absolute;
         bottom: 0;
         left: 0;
     }
-
 </style>
+@if (!(Session["Role"] is null))
+{
+    if (Session["Role"].Equals(Role.Admin))
+    {
+        <input type="button" value="Registruoti prekę &raquo;" onclick="location.href = '@Url.Action("NewItem", "Item")'"/>
+    }
+}
 <div class="jumbotron">
+
     <ul class="products">
-        <li>
-            <a href="#">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/91PGgm6qzOL._AC_SX466_.jpg">
-                <h4>geforce 5555</h4>
-                <p>$200.00</p>
-                <p id="mygtukas"><a href='@Url.Action("Items", "Home")' class="btn btn-primary btn-lg">Peržiūra &raquo;</a></p>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img src="https://i.pinimg.com/originals/5b/87/83/5b8783a2450c63d5c92053c31ff2adc3.jpg">
-                <h4>geforce 9000+</h4>
-                <p>$250.00</p>
-                <p><a href='@Url.Action("Items", "Home")' class="btn btn-primary btn-lg">Peržiūra &raquo;</a></p>
-            </a>
-        </li><!-- more list items -->
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="#">
+                    <img src="~/Assets/images/Items/@item.path">
+                    <h4>@item.pavadinimas</h4>
+                    <p>"@item.kaina $"</p>
+                    <input type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item",new RouteValueDictionary(new { id = item.id }))'" />
+                </a>
+            </li>
+        }
+    </ul>
 
 </div>

@@ -8,10 +8,11 @@ namespace komp.Controllers
 {
     public class ErrorController : Controller
     {
+        [AllowAnonymous]
         public ActionResult NotFound()
         {
 
-            return View("~/Views/Error/NotFound.cshtml");
+            return View("~/Views/Shared/NotFound.cshtml");
         }
     }
 }

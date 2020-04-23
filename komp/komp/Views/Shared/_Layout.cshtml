@@ -49,7 +49,7 @@
                     <li>@Html.ActionLink("Pagrindinis", "Index", "Home")</li>
                     <li>@Html.ActionLink("Apie mus", "About", "Home")</li>
                     <li>@Html.ActionLink("Kontaktai", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Prekės", "Items", "Home")</li>
+                    <li>@Html.ActionLink("Prekės", "Items", "Item")</li>
                     @{ if (Session["Role"] is null)
                         {
                             <li id="login">@Html.ActionLink("Prisijungti", "Index", "User")</li>
@@ -59,7 +59,7 @@
                         {
                             if (Session["Role"].ToString() == komp.Models.tipai.Role.Admin)
                             {
-                                <li id="test">@Html.ActionLink("test item", "NewItem", "Item")</li>
+                                //<li id="test">@Html.ActionLink("test item", "NewItem", "Item")</li>
                             }
                             <li id="login">@Html.ActionLink("Atsijungti", "LogOut", "User")</li>
                             <li id="register">@Html.ActionLink("Redaguoti profilį", "EditProfileIndex", "User")</li>

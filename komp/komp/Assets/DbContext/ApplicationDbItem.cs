@@ -51,6 +51,64 @@ namespace komp.Assets.DbContext
             command.ExecuteReader();
             connection.Close();
         }
+        public IList<Item> GetItems(int count)
+        {
+            
+            IList<Item> ieskomasArr = new List<Item>();
+
+            var comp = new MySqlCompiler();
+
+
+            var query = new Query("preke").Limit(count);
+            var cc = comp.Compile(query).ToString();
+            var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
+            connection.Open();
+
+            var reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Item ieskomas = new Item();
+                ieskomas.pavadinimas = reader["pavadinimas"].ToString();
+                ieskomas.tipas = reader["tipas"].ToString();
+                ieskomas.path = reader["imagePath"].ToString();
+                ieskomas.kaina = (float)reader["kaina"];
+                ieskomas.matomas = (bool)reader["matomas"];
+                ieskomas.reitingas = (float)reader["reitingas"];
+                ieskomas.aprasymas = reader["aprasymas"].ToString();
+                ieskomas.id = (int)reader["id"];
+                ieskomasArr.Add(ieskomas);
+            }
+            connection.Close();
+
+            return ieskomasArr;
+        }
+        public Item GetItemById(int id)
+        {
+            var comp = new MySqlCompiler();
+            Item ieskomas = new Item();
+
+            var query = new Query("preke").Where("id", id);
+            var cc = comp.Compile(query).ToString();
+            var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
+            connection.Open();
+
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                
+                ieskomas.pavadinimas = reader["pavadinimas"].ToString();
+                ieskomas.tipas = reader["tipas"].ToString();
+                ieskomas.path = reader["imagePath"].ToString();
+                ieskomas.kaina = (float)reader["kaina"];
+                ieskomas.matomas = (bool)reader["matomas"];
+                ieskomas.reitingas = (float)reader["reitingas"];
+                ieskomas.aprasymas = reader["aprasymas"].ToString();
+                ieskomas.id = (int)reader["id"];
+            }
+
+            return ieskomas;
+        }
 
     }
 }

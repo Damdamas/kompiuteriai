@@ -25,7 +25,7 @@ namespace komp
 
             HttpException httpException = exception as HttpException;
 
-            if (httpException != null)
+            if (httpException != null && Context.Request.RawUrl != "/Error/NotFound")
             {
                 string action;
 
@@ -33,7 +33,7 @@ namespace komp
                 {
                     case 404:
                         // page not found
-                        action = "NotFound";
+                        Response.Redirect(String.Format("~/Error/NotFound", "NotFound", exception.Message));
                         break;
                     case 500:
                         // server error
@@ -47,7 +47,7 @@ namespace komp
                 // clear error on server
                 Server.ClearError();
 
-                Response.Redirect(String.Format("~/Shared/NotFound", action, exception.Message));
+               
             }
         }
     }
