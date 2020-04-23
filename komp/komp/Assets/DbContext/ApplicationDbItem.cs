@@ -51,6 +51,25 @@ namespace komp.Assets.DbContext
             command.ExecuteReader();
             connection.Close();
         }
+
+        public void DisableItem(int id, bool visible)
+        {
+            var comp = new MySqlCompiler();
+            string[] cols = {"matomas"};
+            var val = "";
+            if (visible)
+                val = "0";
+            else
+                val = "1";
+                string[] values = { val};
+
+            var query = new Query("preke").AsUpdate(cols,values).Where("id",id);
+            var cc = comp.Compile(query).ToString();
+            var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
         public IList<Item> GetItems(int count)
         {
             

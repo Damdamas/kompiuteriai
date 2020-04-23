@@ -92,6 +92,13 @@ namespace komp.Controllers
             var list = db.GetItems(10);
             return View("~/Views/Home/Items.cshtml",list);
         }
+
+        public ActionResult DisableItem(int id, bool visible)
+        {
+            var db = new ApplicationDbItem();
+            db.DisableItem(id, visible);
+            return RedirectToAction("Items", "Item");
+        }
         public ActionResult Item(int id)
         {
             var db = new ApplicationDbItem();
