@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using komp.Models.enumTypes;
 
 namespace komp.Models
@@ -35,6 +36,10 @@ namespace komp.Models
 
         public float reitingas { get; set; }
 
+
+
+        [NotMapped]
+        public HttpPostedFileBase itemPath { get; set; }
 
 
         public bool matomas { get; set; }

@@ -30,10 +30,20 @@ namespace komp.Assets.DbContext
 
             connection = new MySqlConnection(connectionString);
         }
-        public void CreateItem(Item item)
+        public void CreateItem(Item item, string path)
         {
             var comp = new MySqlCompiler();
-            var query = new Query("preke").AsInsert(item);
+            var c = new
+            {
+                pavadinimas = item.pavadinimas,
+                kaina = item.kaina,
+                aprasymas = item.aprasymas,
+                tipas = item.tipas,
+                reitingas = item.reitingas,
+                imagePath = path,
+                matomas = item.matomas
+            };
+            var query = new Query("preke").AsInsert(c);
 
 
             var command = new MySqlCommand(comp.Compile(query).ToString(), connection);

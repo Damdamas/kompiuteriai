@@ -34,7 +34,7 @@ namespace komp.Assets.Services
             {
                 filterContext.Result = new ViewResult
                 {
-                    ViewName = "Error"
+                    ViewName = "NotFound"
                 };
             }
         }

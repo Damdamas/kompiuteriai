@@ -45,6 +45,7 @@ namespace komp.Controllers
                 return View("~/Views/Home/login.cshtml");
             }
         }
+        [UserAuthorizationFilter]
         public ActionResult EditProfileIndex()
         {
             var db = new ApplicationDbUser();

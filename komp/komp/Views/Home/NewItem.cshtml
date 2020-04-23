@@ -5,7 +5,8 @@
 
 <h1>Naujo komponento registravimas</h1>
 
-@using (Html.BeginForm("CreateItem", "Item"))
+@using (Html.BeginForm("CreateItem", "Item",FormMethod.Post, 
+    new { enctype="multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -29,16 +30,16 @@
     {
         <p class="text-danger">Toks elektroninis paštas jau naudojamas.</p>
     }
-<div class="form-group">
-    @Html.LabelFor(model => model.tipas, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        @Html.DropDownListFor(model => model.tipas,
-            EnumHelper.GetSelectList(typeof(enumItemType)),
-            "Select My Type",
-            new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.tipas, "", new { @class = "text-danger", required = "required" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.tipas, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.tipas,
+                EnumHelper.GetSelectList(typeof(enumItemType)),
+                "Select My Type",
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.tipas, "", new { @class = "text-danger", required = "required" })
+        </div>
     </div>
-</div>
     @if (ViewBag.Message3 == "3")
     {
         <p class="text-danger">Toks prisijungimo vardas jau panaudotas</p>
@@ -57,6 +58,15 @@
             @Html.ValidationMessageFor(model => model.matomas, "", new { @class = "text-danger", required = "required" })
         </div>
     </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.matomas, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.itemPath, new { type = "file", name = "Files" })<br /><br />
+            @Html.ValidationMessageFor(model => model.matomas, "", new { @class = "text-danger", required = "required" })
+        </div>
+    </div>
+
+
 
 
     <div class="form-group">
