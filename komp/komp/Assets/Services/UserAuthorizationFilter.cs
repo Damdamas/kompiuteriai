@@ -14,7 +14,8 @@ namespace komp.Assets.Services
         public void OnAuthentication(AuthenticationContext filterContext)
         {
             //Check Session is Empty Then set as Result is HttpUnauthorizedResult 
-            if (Convert.ToString(filterContext.HttpContext.Session["Role"]) != Role.User)
+            if ((Convert.ToString(filterContext.HttpContext.Session["Role"]) != Role.User) &&
+            (Convert.ToString(filterContext.HttpContext.Session["Role"]) != Role.Admin))
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }
