@@ -84,15 +84,7 @@ else if (Session["Role"].Equals(Role.Admin))
             <h4>@item.pavadinimas</h4>
             <p>@item.kaina $</p>
 
-            @if ((Session["Role"] is null))
-            {
 
-            }
-            else if (Session["Role"].Equals(Role.Admin))
-            {
-                <p>matomumas: @item.matomas</p>
-                <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", new RouteValueDictionary(new {id = item.id, visible = item.matomas}))'" />
-            }
 
             <input type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item", new RouteValueDictionary(new {id = item.id}))'" />
             <input type="button" value="Į Krepšelį &raquo;" onclick="location.href = '@Url.Action("ToBasket", "Item", item)'" />

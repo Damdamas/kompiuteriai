@@ -94,11 +94,12 @@ namespace komp.Controllers
             return View("~/Views/Home/Items.cshtml",list);
         }
 
-        public ActionResult DisableItem(int id, bool visible)
+        public ActionResult DisableItem(Item item)
         {
             var db = new ApplicationDbItem();
-            db.DisableItem(id, visible);
-            return RedirectToAction("Items", "Item");
+            db.DisableItem(item.id, item.matomas);
+            item.matomas = !item.matomas;
+            return RedirectToAction("Item", "Item", item);
         }
         public ActionResult Item(int id)
         {
