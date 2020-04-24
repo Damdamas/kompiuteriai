@@ -153,5 +153,23 @@ namespace komp.Controllers
             return View("~/Views/Home/EditItem.cshtml", item);
         }
 
+        public ActionResult ToBasket(Item item)
+        {
+            if (Session["Basket"] is null)
+            {
+                Session["Basket"]= new Basket();
+                var bask = (Basket)Session["Basket"];
+                bask.prekes.Add(item);
+                Session["Basket"] = bask;
+            }
+            else
+            {
+                var bask = (Basket)Session["Basket"];
+                bask.prekes.Add(item);
+                Session["Basket"] = bask;
+            }
+
+            return RedirectToAction("Items");
+        }
     }
 }

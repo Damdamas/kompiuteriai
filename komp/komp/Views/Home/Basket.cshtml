@@ -1,272 +1,64 @@
-﻿
+﻿@using komp.Models.tipai
+@model komp.Models.Basket
 @{
     ViewBag.Title = "basker";
 }
-    <div class="shopping-cart-main-wrap" style="margin: 5px;">
-        <table border="0" width="100%" cellspacing="0" cellpadding="0" class="shopping-cart-main print-search-result ">
-            <colgroup>
-                <col width="101">
-                <col width="67">
-                <col width="">
-                <col width="65" align="right">
-                <col width="75" align="right">
-                <col width="75" align="right">
-                <col width="15">
-            </colgroup>
-            <tbody>
-                <tr>
-                    <th>Modelis</th>
-                    <th colspan="2">Prekė</th>
-                    <th align="right">Vnt.&nbsp;Kaina</th>
-                    <th align="right">Kiekis</th>
-                    <th align="right" style="border-right: 0px solid transparent" colspan="2">Iš viso</th>
-                </tr>
-                <tr id="product5e64d9e373c2c" class="product-line">
-                    <td style="padding-left: 4px; vertical-align: text-top; word-wrap: break-word;">
-                        81GC0072LT
-                    </td>
-                    <td align="center" valign="top" class="photo-wrap">
-                        <a href="https://www.skytech.lt/images/xsmall/46/2023746.png">
-                            <img src="https://www.skytech.lt/images/xsmall/46/2023746.png" border="0" alt="" style="border: 0; max-width: 60px;">
-                        </a>
-                    </td>
-                    <td style="padding-left: 3px;">
-                        <table border="0" width="100%" cellspacing="0" cellpadding="0" class="name-wrap">
-                            <tbody>
-                                <tr>
-                                    <td class="name-wrap" valign="middle">
-                                        <div>
-                                            <a href="/81gc0072lt-lenovo-ideapad-330s-grey-156-ips-fhd-1920x1080-matt-intel-core-i58250-p-416833.html"><p align="bottom">Lenovo IdeaPad 330S Grey - 15.6" IPS, FHD (1920x1080) Matt | Intel Core i5-8250U | 8GB RAM |SSD 256 GB | NVIDIA GeForce 1050 4GB | Windows 10 Home English keyboard + backlit | Warr...</p></a>
-                                        </div>
-                                        <div class="options">
-                                            <div style="padding-top: 3px;">
-                                                <table cellspacing="0" cellpadding="0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="padding-right: 10px; vertical-align: top">
-                                                                <div class="green-text" style="float:left;">Apsaugos programa:&nbsp;</div><div id="a_5e64d9e373c2c-11" style="color: #0A74CA; cursor:pointer; cursor:hand; width:auto; position:relative;display:inline-block; float:left; " class="opt_action" title="nepasirinkta">nepasirinkta</div> <div class="arrow-down-options" id="arrow_5e64d9e373c2c-11" style="display: none;"></div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div style="display:block; margin-top:10px;">
-                                                <span class="green-text" style="padding-top: 3px;">Pristatymas: </span>
-                                                <span style="font-weight: bold;">2-3 d.d.</span>
-                                            </div>
-                                            <div id="ot_5e64d9e373c2c-11" class="opt_tooltip tooltip-box hide">
-                                                <div id="ac_5e64d9e373c2c-11" class="close"></div>
-                                                <div id="aad_5e64d9e373c2c-11" class="arrow-down small" style="left: 115px; display: none;"></div>
-                                                <div class="preInput">
-                                                    <input checked="" id="oi_0_11_0.00_5e64d9e373c2c-11" type="radio" name="id[11-5e64d9e373c2c]" value="0">
-                                                    <label for="oi_0_11_0.00_5e64d9e373c2c-11"><span class="opt-label-value">nepasirinkta</span> </label>
-                                                </div>
-                                                <div class="preInput">
-                                                    <input id="oi_1315_11_4.99_5e64d9e373c2c-11" type="radio" name="id[11-5e64d9e373c2c]" value="1315">
-                                                    <label for="oi_1315_11_4.99_5e64d9e373c2c-11">
-                                                        <span class="opt-label-value">F-Secure Safe 6 mėnesių prenumerata 3 įrenginiams</span>                                                                 <div class="opt_price" style="position:relative; display:inline-block;">
-                                                            (+4.99€)
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                                <div class="preInput">
-                                                    <input id="oi_1016_11_11.99_5e64d9e373c2c-11" type="radio" name="id[11-5e64d9e373c2c]" value="1016">
-                                                    <label for="oi_1016_11_11.99_5e64d9e373c2c-11">
-                                                        <span class="opt-label-value">Kaspersky Internet Security OEM</span>                                                                 <div class="opt_price" style="position:relative; display:inline-block;">
-                                                            (+11.99€)
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                                <div class="preInput">
-                                                    <input id="oi_1021_11_12.99_5e64d9e373c2c-11" type="radio" name="id[11-5e64d9e373c2c]" value="1021">
-                                                    <label for="oi_1021_11_12.99_5e64d9e373c2c-11">
-                                                        <span class="opt-label-value">ESET Internet Security OEM</span>                                                                 <div class="opt_price" style="position:relative; display:inline-block;">
-                                                            (+12.99€)
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                    <td align="center" class="line-price">
-                        799.00 €
-                    </td>
-                    <td align="center">
-                        <div class="kiekis-widget"><input class="cart-product-qty" type="text" maxlength="3" size="2" name="cart_quantity[]" value="1" style="left: -8px" id="pqty_5e64d9e373c2c"><div class="up"></div><div class="down"></div></div><input type="hidden" name="products_id[]" value="416833{11}0"><input type="hidden" name="is_pc[]" value="I">
-                    </td>
-                    <td align="center" class="line-total">
-                        799.00 €
-                    </td>
-                    <td valign="middle" class="remove-icon-td" style="padding-left: 2px; padding-right: 4px;">
-                        <a href="/shopping_cart.php?action=delete_product&amp;products_uniq=5e64d9e373c2c" class="remove-icon" style="position: relative; top: -1px;"></a>
-                    </td>
-                </tr>
-                <input type="hidden" name="id[425917{11}0][11]">
-                <tr id="product5e64d9e420672" class="product-line">
-                    <td style="padding-left: 4px; vertical-align: text-top; word-wrap: break-word;">
-                        81FV014LLT
-                    </td>
-                    <td align="center" valign="top" class="photo-wrap">
-                        <a href="/81fv014llt-lenovo-legion-y530-black-156-ips-fhd-1920x1080-matt-intel-core-i58300-p-425917.html">
-                            <img src="https://www.skytech.lt/images/xsmall/2/2134302.png" border="0" alt="" style="border: 0; max-width: 60px;">
-                        </a>
-                    </td>
-                    <td style="padding-left: 3px;">
-                        <table border="0" width="100%" cellspacing="0" cellpadding="0" class="name-wrap">
-                            <tbody>
-                                <tr>
-                                    <td class="name-wrap" valign="middle">
-                                        <div>
-                                            <a href="https://www.skytech.lt/images/xsmall/2/2134302.png"><p align="bottom">Lenovo Legion Y530 Black - 15.6" IPS, FHD (1920x1080) Matt | Intel Core i5-8300H | 8GB DDR4 | SSD 512 GB | NVIDIA GeForce 1050 Ti 4GB | Windows 10 Home | ENG keyboard + backlit</p></a>
-                                        </div>
-                                        <div class="options">
-                                            <div style="padding-top: 3px;">
-                                                <table cellspacing="0" cellpadding="0">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td style="padding-right: 10px; vertical-align: top">
-                                                                <div class="green-text" style="float:left;">Apsaugos programa:&nbsp;</div><div id="a_5e64d9e420672-11" style="color: #0A74CA; cursor:pointer; cursor:hand; width:auto; position:relative;display:inline-block; float:left; " class="opt_action" title="nepasirinkta">nepasirinkta</div> <div class="arrow-down-options" id="arrow_5e64d9e420672-11" style="display: none;"></div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div style="display:block; margin-top:10px;">
-                                                <span class="green-text" style="padding-top: 3px;">Pristatymas: </span>
-                                                <span style="font-weight: bold;">2-3 d.d.</span>
-                                            </div>
-                                            <div id="ot_5e64d9e420672-11" class="opt_tooltip tooltip-box hide">
-                                                <div id="ac_5e64d9e420672-11" class="close"></div>
-                                                <div id="aad_5e64d9e420672-11" class="arrow-down small" style="left: 115px; display: none;"></div>
-                                                <div class="preInput">
-                                                    <input checked="" id="oi_0_11_0.00_5e64d9e420672-11" type="radio" name="id[11-5e64d9e420672]" value="0">
-                                                    <label for="oi_0_11_0.00_5e64d9e420672-11"><span class="opt-label-value">nepasirinkta</span> </label>
-                                                </div>
-                                                <div class="preInput">
-                                                    <input id="oi_1315_11_4.99_5e64d9e420672-11" type="radio" name="id[11-5e64d9e420672]" value="1315">
-                                                    <label for="oi_1315_11_4.99_5e64d9e420672-11">
-                                                        <span class="opt-label-value">F-Secure Safe 6 mėnesių prenumerata 3 įrenginiams</span>                                                                 <div class="opt_price" style="position:relative; display:inline-block;">
-                                                            (+4.99€)
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                                <div class="preInput">
-                                                    <input id="oi_1016_11_11.99_5e64d9e420672-11" type="radio" name="id[11-5e64d9e420672]" value="1016">
-                                                    <label for="oi_1016_11_11.99_5e64d9e420672-11">
-                                                        <span class="opt-label-value">Kaspersky Internet Security OEM</span>                                                                 <div class="opt_price" style="position:relative; display:inline-block;">
-                                                            (+11.99€)
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                                <div class="preInput">
-                                                    <input id="oi_1021_11_12.99_5e64d9e420672-11" type="radio" name="id[11-5e64d9e420672]" value="1021">
-                                                    <label for="oi_1021_11_12.99_5e64d9e420672-11">
-                                                        <span class="opt-label-value">ESET Internet Security OEM</span>                                                                 <div class="opt_price" style="position:relative; display:inline-block;">
-                                                            (+12.99€)
-                                                        </div>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                    <td align="center" class="line-price">
-                        899.00 €
-                    </td>
-                    <td align="center">
-                        <div class="kiekis-widget"><input class="cart-product-qty" type="text" maxlength="3" size="2" name="cart_quantity[]" value="1" style="left: -8px" id="pqty_5e64d9e420672"><div class="up"></div><div class="down"></div></div><input type="hidden" name="products_id[]" value="425917{11}0"><input type="hidden" name="is_pc[]" value="I">
-                    </td>
-                    <td align="center" class="line-total">
-                        899.00 €
-                    </td>
-                    <td valign="middle" class="remove-icon-td" style="padding-left: 2px; padding-right: 4px;">
-                        <a href="https://www.skytech.lt/images/xsmall/2/2134302.png" class="remove-icon" style="position: relative; top: -1px;"></a>
-                    </td>
-                </tr>
+<div class="jumbotron">
 
-                <tr id="product5e64d9e5dc98b" class="product-line">
-                    <td style="padding-left: 4px; vertical-align: text-top; word-wrap: break-word;">
-                        MVFJ2ZE/A
-                    </td>
-                    <td align="center" valign="top" class="photo-wrap">
-                        <a href="https://www.skytech.lt/images/xsmall/2/2134302.png">
-                            <img src="https://www.skytech.lt/images/xsmall/70/2407370.png" border="0" alt="" style="border: 0; max-width: 60px;">
-                        </a>
-                    </td>
-                    <td style="padding-left: 3px;">
-                        <table border="0" width="100%" cellspacing="0" cellpadding="0" class="name-wrap">
-                            <tbody>
-                                <tr>
-                                    <td class="name-wrap" valign="middle">
-                                        <div>
-                                            <a href="/mvfj2zea-apple-macbook-air-2019-nesiojamas-kompiuteris-intel-core-ghz-133-2560x1-p-457779.html"><p align="bottom">Apple MacBook Air (2019) nešiojamas kompiuteris | Intel Core i5 1.6 GHz | 13.3" (2560x1600) IPS ekranas | 8GB RAM | 256GB SSD | Intel UHD | Force Touch | macOS Mojave | Anglų klavi...</p></a>
-                                        </div>
-                                        <div class="options">
-                                            <div style="display:block; margin-top:10px;">
-                                                <span class="green-text" style="padding-top: 3px;">Pristatymas: </span>
-                                                <span style="font-weight: bold;">2-3 d.d.</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                    <td align="center" class="line-price">
-                        1 339.00 €
-                    </td>
-                    <td align="center">
-                        <div class="kiekis-widget"><input class="cart-product-qty" type="text" maxlength="3" size="2" name="cart_quantity[]" value="1" style="left: -8px" id="pqty_5e64d9e5dc98b"><div class="up"></div><div class="down"></div></div><input type="hidden" name="products_id[]" value="457779"><input type="hidden" name="is_pc[]" value="I">
-                    </td>
-                    <td align="center" class="line-total">
-                        1 339.00 €
-                    </td>
-                    <td valign="middle" class="remove-icon-td" style="padding-left: 2px; padding-right: 4px;">
-                        <a href="/shopping_cart.php?action=delete_product&amp;products_uniq=5e64d9e5dc98b" class="remove-icon" style="position: relative; top: -1px;"></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <ul class="products">
+        @if (Model.prekes.Count != 0)
+        {
+            foreach (var item in Model.prekes)
+            {
+                <li>
 
-        <table border="0" width="100%" cellspacing="0" cellpadding="0" class="shopping-cart-totals">
-            <tbody>
-                <tr>
-                    <td>
-                        <img src="images/pixel_trans.gif" border="0" alt="" width="100%" height="10">
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" class="main" style="padding-bottom: 20px;">
-                        <b id="cart-total">Suma: 3 037.00 €</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id="min-fee-warning" data-threshold="19.99" style="background: #eaf3e6; padding: 4px; margin: 0 0 10px 0; border: 1px solid #98da61; border-radius: 5px; display: none;">
-                            <table width="100%">
-                                <tbody>
-                                    <tr>
-                                        <td width="40" valign="middle" align="center"><img style="width: 40px; height: 40px;" alt="" src="/images/icon-pastaba-40.png"></td>
-                                        <td colspan="2" style="line-height: 1.2em; padding-left: 10px;">Dėmesio: šiam prekių krepšeliui bus taikomas 0.00 EUR administravimo mokestis, skirtas padengti sandėlio sistemų palaikymo ir prekių paruošimo proceso sąnaudas. Jis taikomas užsakymams, kurių krepšelio suma yra mažesnė nei 19.99 € (neskaitant pristatymo išlaidų). Daugiau informacijos rasite paspaudę <a class="formlink" href="#min-fee-dialog" data-toggle="modal" data-backdrop="false">šią nuorodą</a>.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="main">
-                        <input type="hidden" name="surinkimas" value="0">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                    <div class="container">
+                        @if ((Session["Role"] is null))
+                        {
+                            <img src="~/Assets/images/Items/@item.path">
+                        }
+                        else if (Session["Role"].Equals(Role.User))
+                        {
+                            <img src="~/Assets/images/Items/@item.path">
+                        }
+                        else if (Session["Role"].Equals(Role.Admin))
+                        {
+                            if (item.matomas)
+                            {
+                                <img src="~/Assets/images/Items/@item.path">
+                            }
+                            else
+                            {
+                                <img style="filter: grayscale(100%)" src="~/Assets/images/Items/@item.path">
+                                <div class="centered">Nematoma</div>
+                            }
+                        }
 
+                    </div>
+
+                    <h4>@item.pavadinimas</h4>
+                    <p>@item.kaina $</p>
+
+                    @if ((Session["Role"] is null))
+                    {
+
+                    }
+                    else if (Session["Role"].Equals(Role.Admin))
+                    {
+                        <p>matomumas: @item.matomas</p>
+                        <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", new RouteValueDictionary(new {id = item.id, visible = item.matomas}))'"/>
+                    }
+
+                    <input type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item", new RouteValueDictionary(new {id = item.id}))'"/>
+
+
+                </li>
+            }
+        }
+        else
+        {
+            <h1>Tuščias krepšelis</h1>
+        }
+    </ul>
+
+</div>

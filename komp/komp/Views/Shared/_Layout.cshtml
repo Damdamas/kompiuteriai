@@ -19,7 +19,7 @@
         white-space: nowrap;
         overflow: hidden;
     }
-    #test {
+    #basket {
         position: absolute;
         right: 50%;
     }
@@ -50,6 +50,7 @@
                     <li>@Html.ActionLink("Apie mus", "About", "Home")</li>
                     <li>@Html.ActionLink("Kontaktai", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Prekės", "Items", "Item")</li>
+                    <li id="basket">@Html.ActionLink("Krepšelis", "Index", "Basket")</li>
                     @{ if (Session["Role"] is null)
                         {
                             <li id="login">@Html.ActionLink("Prisijungti", "Index", "User")</li>

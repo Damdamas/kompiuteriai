@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using komp.Models;
 
 namespace komp.Controllers
 {
@@ -11,7 +12,14 @@ namespace komp.Controllers
         // GET: Basket
         public ActionResult Index()
         {
-            return View();
+            if (Session["Basket"] is null)
+            {
+                Session["Basket"] = new Basket();
+            }
+
+            return View("~/Views/Home/Basket.cshtml", (Basket)Session["Basket"]);
         }
+
+
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using komp.Models;
 using komp.Models.tipai;
 
 namespace komp
@@ -18,7 +19,6 @@ namespace komp
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
         protected void Application_Error(object sender, EventArgs e)
         {
             Exception exception = Server.GetLastError();
