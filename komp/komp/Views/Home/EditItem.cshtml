@@ -1,7 +1,81 @@
-﻿
-@{
-    ViewBag.Title = "EditItem";
-}
+﻿@using komp.Models.enumTypes
+@using komp.Models.tipai
+@model komp.Models.Item
 
-<h2>EditItem</h2>
+
+<h1>Naujo komponento registravimas</h1>
+
+<img src="~/Assets/images/Items/@Model.path">
+
+@using (Html.BeginForm("EditItem", "Item", FormMethod.Post,
+    new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.kaina, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.kaina, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.kaina, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.pavadinimas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pavadinimas, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.pavadinimas, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+        @if (ViewBag.Message2 == "2")
+        {
+            <p class="text-danger">Toks elektroninis paštas jau naudojamas.</p>
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.tipas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.tipas,
+                    EnumHelper.GetSelectList(typeof(enumItemType)),
+                    "Select My Type",
+                    new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.tipas, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+        @if (ViewBag.Message3 == "3")
+        {
+            <p class="text-danger">Toks prisijungimo vardas jau panaudotas</p>
+        }
+        <div class="form-group">
+            @Html.LabelFor(model => model.aprasymas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.aprasymas, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.aprasymas, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.matomas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.matomas, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.matomas, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.matomas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.itemPath, new { type = "file", name = "Files" })<br /><br />
+                @Html.ValidationMessageFor(model => model.matomas, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registruoti" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
 

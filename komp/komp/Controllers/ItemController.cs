@@ -12,6 +12,7 @@ using komp.Assets.Services;
 using komp.Models;
 using komp.Models.enumTypes;
 using komp.Models.tipai;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 using Enum = System.Enum;
 
 namespace komp.Controllers
@@ -104,6 +105,52 @@ namespace komp.Controllers
             var db = new ApplicationDbItem();
             var item = db.GetItemById(id);
             return View("~/Views/Home/Item.cshtml",item);
+        }
+
+        public ActionResult EditItem(Item item)
+        {
+            string path = item.path;
+            string imgpath = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString() + ".jpg";
+            try
+            {
+                if (item.itemPath != null)
+                {
+                    string pic = System.IO.Path.GetFileName(item.itemPath.FileName);
+                    // file is uploaded
+
+                    path = System.IO.Path.Combine(
+                        Server.MapPath("~/Assets/images/Items"),
+                        imgpath);
+                    item.itemPath.SaveAs(path);
+
+                }
+                var tipas = (enumItemType)Enum.Parse(typeof(enumItemType), item.tipas, true);
+                item.tipas = tipas
+                                 .GetType()
+                                 .GetMember(tipas.ToString())
+                                 .FirstOrDefault()
+                                 ?.GetCustomAttribute<DescriptionAttribute>()
+                                 ?.Description
+                             ?? tipas.ToString();
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
+            var db = new ApplicationDbItem();
+            db.UpdateItem(item, path);
+            if(!item.path.Equals(path))
+            System.IO.File.Delete(path = System.IO.Path.Combine(
+                Server.MapPath("~/Assets/images/Items"),
+                item.path));
+
+            return View("~/Views/Home/EditItem.cshtml");
+        }
+
+        public ActionResult EditItemIndex(Item item)
+        {
+            return View("~/Views/Home/EditItem.cshtml", item);
         }
 
     }

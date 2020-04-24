@@ -1,4 +1,5 @@
-﻿@model komp.Models.Item
+﻿@using komp.Models.tipai
+@model komp.Models.Item
 
 
 <style>
@@ -27,6 +28,14 @@
         right: 20%
     }
 </style>
+@if ((Session["Role"] is null))
+{
+
+}
+else if (Session["Role"].Equals(Role.Admin))
+{
+    <input type="button" value="Redaguoti prekę &raquo;" onclick="location.href = '@Url.Action("EditItemIndex", "Item", @Model)'" />
+}
 @{
     <div id="divspec">
         <img src="~/Assets/images/Items/@Model.path">

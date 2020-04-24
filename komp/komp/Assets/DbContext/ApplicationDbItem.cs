@@ -70,6 +70,29 @@ namespace komp.Assets.DbContext
             command.ExecuteNonQuery();
             connection.Close();
         }
+
+        public void UpdateItem(Item item, string path)
+        {
+            var comp = new MySqlCompiler();
+
+            var c = new
+            {
+                pavadinimas = item.pavadinimas,
+                kaina = item.kaina,
+                aprasymas = item.aprasymas,
+                tipas = item.tipas,
+                reitingas = item.reitingas,
+                imagePath = path,
+                matomas = item.matomas
+            };
+
+            var query = new Query("preke").AsUpdate(c).Where("id", item.id);
+            var cc = comp.Compile(query).ToString();
+            var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
+            connection.Open();
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
         public IList<Item> GetItems(int count)
         {
             
