@@ -1,4 +1,5 @@
-﻿@using komp.Models.tipai
+﻿@using komp.Models
+@using komp.Models.tipai
 @model komp.Models.Item
 
 
@@ -88,6 +89,7 @@ else if (Session["Role"].Equals(Role.Admin))
         </ul>
     </div>
 </div>
+@Html.Partial("~/Views/Comment/NewComment.cshtml",new Comment());
 @if ((Session["Role"] is null))
 {
 

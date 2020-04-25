@@ -1,0 +1,41 @@
+﻿@model komp.Models.Comment
+
+<h1>Rašyti komentarą</h1>
+<style>
+
+    textarea {
+        font-size: .8rem;
+        letter-spacing: 1px;
+        padding: 10px;
+        line-height: 1.5;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-shadow: 1px 1px 1px #999;
+        width: 50%;
+        resize: both;
+        overflow: auto;
+    }
+</style>
+@using (Html.BeginForm("Login", "User"))
+{
+    @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "Nepavyko prisijungti. Klaidingi prisijungimo duomenys.")
+
+
+            @Html.LabelFor(model => model.turinys, htmlAttributes: new { @class = "control-label col-md-2" })
+   
+                @Html.TextAreaFor(model => model.turinys)
+                @Html.ValidationMessageFor(model => model.turinys, "", new { @class = "text-danger", required = "required" })
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Prisijungti" class="btn btn-default" />
+            </div>
+        </div>
+
+
+}
+@{
+    Model.sukurimoData = DateTime.Now;
+}

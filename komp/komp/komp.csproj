@@ -303,6 +303,7 @@
     <Compile Include="Assets\Services\AnonymousAuthorizationFilter.cs" />
     <Compile Include="Assets\Services\UserAuthorizationFilter.cs" />
     <Compile Include="Controllers\BasketController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
@@ -374,6 +375,8 @@
     <Content Include="Views\Home\EditProfile.cshtml" />
     <Content Include="Views\Home\NewItem.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
+    <Content Include="Views\Comment\Comments.cshtml" />
+    <Content Include="Views\Comment\NewComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
