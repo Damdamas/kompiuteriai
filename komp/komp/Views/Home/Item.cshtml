@@ -91,14 +91,20 @@ else if (Session["Role"].Equals(Role.Admin))
     </div>
 </div>
 
-@{Html.RenderPartial("~/Views/Comment/NewComment.cshtml",new Comment(), new ViewDataDictionary {{"itemId", Model.id}, {"userId", ((User) Session["User"]).id},{"comment",new Comment()}});}
-@Html.Action("Index","Comment",new {itemId = Model.id});
-@if ((Session["Role"] is null))
+@if (!(Session["Role"] is null))
 {
 
+
+    if (Session["Role"].Equals(Role.Admin))
+    {
+        <p>matomumas: @Model.matomas</p>
+        <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", Model)'" />
+        Html.RenderPartial("~/Views/Comment/NewComment.cshtml", new Comment(), new ViewDataDictionary { { "itemId", Model.id }, { "userId", ((User)Session["User"]).id }, { "comment", new Comment() } });
+    }
+    else if (Session["Role"].Equals(Role.User))
+    {
+        Html.RenderPartial("~/Views/Comment/NewComment.cshtml", new Comment(), new ViewDataDictionary { { "itemId", Model.id }, { "userId", ((User)Session["User"]).id }, { "comment", new Comment() } });
+    }
 }
-else if (Session["Role"].Equals(Role.Admin))
-{
-    <p>matomumas: @Model.matomas</p>
-    <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", Model)'" />
-}
+@Html.Action("Index", "Comment", new { itemId = Model.id });
+

@@ -6,20 +6,15 @@
 <style>
     img {
         max-width: 100%;
-        max-height: 100%;
+        height:auto;
+        position: center;
+        margin: 0 auto;
     }
-
-    ul.products li {
-        width: 20%;
-        height: 30%;
-        display: inline-block;
-        vertical-align: top;
-    }
-
-    .mygtukas {
-        position: absolute;
-        bottom: 0;
-        left: 0;
+    .divimg {
+        position: relative;
+        max-height: 50%;
+        min-height: 50%;
+        overflow: hidden;
     }
 
     .centered {
@@ -30,15 +25,29 @@
         color: red;
         font-size: 200%
     }
-
-    .container {
+    .buttons {
+        position: absolute; 
+        bottom: 0;
+        font-size: 20px;
+    }
+    .grid-container {
+        width: auto;
+        height: auto;
+        display: grid;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        grid-template-columns: auto auto auto;
+    }
+    .grid-item {
+        height: 400px;
+        overflow: visible;
         position: relative;
-        text-align: center;
+        font-size: 30px;
     }
 
-    .buttons {
-        position: absolute;
-        top: 10%
+    .data {
+        position: relative;
+        bottom: -10%;
     }
 </style>
 @if ((Session["Role"] is null))
@@ -50,14 +59,13 @@ else if (Session["Role"].Equals(Role.Admin))
     <input type="button" value="Registruoti prekę &raquo;" onclick="location.href = '@Url.Action("NewItem", "Item")'" />
 }
 
-<div class="jumbotron">
+<div class="grid-container">
 
-    <ul class="products">
-        @foreach (var item in Model)
-        {
-        <li>
+    @foreach (var item in Model)
+    {
 
-            <div class="container">
+        <div class="grid-item">
+            <div class="divimg">
                 @if ((Session["Role"] is null))
                 {
                     <img src="~/Assets/images/Items/@item.path">
@@ -78,20 +86,20 @@ else if (Session["Role"].Equals(Role.Admin))
                         <div class="centered">Nematoma</div>
                     }
                 }
-
             </div>
 
-            <h4>@item.pavadinimas</h4>
-            <p>@item.kaina $</p>
+            <div class="data">
+                <h4>@item.pavadinimas</h4>
+                <p>@item.kaina $</p>
+            </div>
 
 
+            <div class="buttons">
+                <input  type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item", new RouteValueDictionary(new {id = item.id}))'" />
+                <input style="background-color: greenyellow" type="button" value="Į Krepšelį &raquo;" onclick="location.href = '@Url.Action("ToBasket", "Item", item)'" />
+            </div>
+        </div>
 
-            <input type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item", new RouteValueDictionary(new {id = item.id}))'" />
-            <input type="button" value="Į Krepšelį &raquo;" onclick="location.href = '@Url.Action("ToBasket", "Item", item)'" />
-
-
-        </li>
         }
-    </ul>
 
 </div>

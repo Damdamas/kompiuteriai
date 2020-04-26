@@ -377,6 +377,7 @@
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Comment\Comments.cshtml" />
     <Content Include="Views\Comment\NewComment.cshtml" />
+    <Content Include="Views\Home\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
