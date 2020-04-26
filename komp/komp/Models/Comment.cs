@@ -10,6 +10,8 @@ namespace komp.Models
         public DateTime sukurimoData { get; set; }
 
         public string turinys { get; set; }
-        public string id { get; set; }
+        public int naudotojasId { get; set; }
+        public int prekeId { get; set; }
+        public int id { get; set; }
     }
 }

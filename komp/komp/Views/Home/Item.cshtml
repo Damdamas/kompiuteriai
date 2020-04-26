@@ -28,6 +28,7 @@
         position: center;
         right: 20%
     }
+
     .centered {
         position: absolute;
         top: 50%;
@@ -35,8 +36,8 @@
         transform: translate(-50%, -50%);
         color: red;
         font-size: 200%;
-
     }
+
     .container {
         position: relative;
         text-align: center;
@@ -89,7 +90,9 @@ else if (Session["Role"].Equals(Role.Admin))
         </ul>
     </div>
 </div>
-@Html.Partial("~/Views/Comment/NewComment.cshtml",new Comment());
+
+@{Html.RenderPartial("~/Views/Comment/NewComment.cshtml",new Comment(), new ViewDataDictionary {{"itemId", Model.id}, {"userId", ((User) Session["User"]).id},{"comment",new Comment()}});}
+@Html.Action("Index","Comment",new {itemId = Model.id});
 @if ((Session["Role"] is null))
 {
 

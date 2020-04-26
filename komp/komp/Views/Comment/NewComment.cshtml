@@ -1,5 +1,12 @@
-﻿@model komp.Models.Comment
+﻿@using komp.Models
+@model komp.Models.Comment
 
+@{
+    var itemid = (int) ViewData["itemId"];
+    var userid = (int) ViewData["userId"];
+    Model.sukurimoData = DateTime.Now;
+
+}
 <h1>Rašyti komentarą</h1>
 <style>
 
@@ -16,26 +23,23 @@
         overflow: auto;
     }
 </style>
-@using (Html.BeginForm("Login", "User"))
+@using (Html.BeginForm("Create", "Comment",new { itemId = @itemid, userID = @userid }, FormMethod.Post, null))
 {
     @Html.AntiForgeryToken()
 
-        @Html.ValidationSummary(true, "Nepavyko prisijungti. Klaidingi prisijungimo duomenys.")
+    @Html.ValidationSummary(true, "Nepavyko prisijungti. Klaidingi prisijungimo duomenys.")
 
 
-            @Html.LabelFor(model => model.turinys, htmlAttributes: new { @class = "control-label col-md-2" })
-   
-                @Html.TextAreaFor(model => model.turinys)
-                @Html.ValidationMessageFor(model => model.turinys, "", new { @class = "text-danger", required = "required" })
+    @Html.LabelFor(model => model.turinys, htmlAttributes: new { @class = "control-label col-md-2" })
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Prisijungti" class="btn btn-default" />
-            </div>
+    @Html.TextAreaFor(model => model.turinys)
+    @Html.ValidationMessageFor(model => model.turinys, "", new { @class = "text-danger", required = "required" })
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Prisijungti" class="btn btn-default" />
         </div>
+    </div>
 
 
-}
-@{
-    Model.sukurimoData = DateTime.Now;
 }

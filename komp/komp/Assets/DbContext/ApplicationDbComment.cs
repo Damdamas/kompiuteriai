@@ -26,16 +26,42 @@ namespace komp.Assets.DbContext
 
             connection = new MySqlConnection(connectionString);
         }
-        public void CreateComment(Comment comment)
+        public void CreateComment(Comment comment, int userid, int itemid)
         {
+            comment.naudotojasId = userid;
+            comment.prekeId = itemid;
+            comment.turinys = @comment.turinys;
             var comp = new MySqlCompiler();
             var query = new Query("komentaras").AsInsert(comment);
 
-
             var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
             connection.Open();
-            command.ExecuteReader();
+
+
+            command.ExecuteNonQuery();
             connection.Close();
+        }
+
+        public IList<Comment> SelectCommentsByItem(int itemID)
+        {
+            var comments = new List<Comment>();
+            var comp = new MySqlCompiler();
+            var query = new Query("komentaras").Where("prekeId",itemID);
+            var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
+            connection.Open();
+
+
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                var comment = new Comment();
+                comment.id = (int)reader["id"];
+                comment.sukurimoData = (DateTime) reader["sukurimoData"];
+                comment.turinys = reader["turinys"].ToString();
+                comments.Add(comment);
+            }
+            connection.Close();
+            return comments;
         }
     }
 }

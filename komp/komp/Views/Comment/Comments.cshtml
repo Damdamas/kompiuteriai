@@ -1,31 +1,10 @@
-﻿@model komp.Models.Comment
+﻿@model IList<komp.Models.Comment>
 
-<h1>Rašyti komentarą</h1>
-
-@using (Html.BeginForm("Login", "User"))
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "Nepavyko prisijungti. Klaidingi prisijungimo duomenys.")
-
-        <div cclass="span6" rows="3">
-            @Html.LabelFor(model => model.turinys, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="">
-                <span>
-                    @Html.TextAreaFor(model => model.turinys, new { htmlAttributes = new { @rows="4", cols="50" } })
-                    @Html.ValidationMessageFor(model => model.turinys, "", new { @class = "text-danger", required = "required" })
-                </span>
-
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Prisijungti" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-
-}
+<h1>Komentatu sarasaaaaas</h1>
 @{
-    Model.sukurimoData = DateTime.Now;
+    foreach (var comment in Model)
+    {
+        <a>@comment.turinys</a>
+    }
 }
+
