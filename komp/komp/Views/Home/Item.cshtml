@@ -43,68 +43,70 @@
         text-align: center;
     }
 </style>
-@if ((Session["Role"] is null))
-{
+<div class="content">
+    @if ((Session["Role"] is null))
+    {
 
-}
-else if (Session["Role"].Equals(Role.Admin))
-{
-    <input type="button" value="Redaguoti prekę &raquo;" onclick="location.href = '@Url.Action("EditItemIndex", "Item", @Model)'" />
-}
-@{
-    <div id="divspec">
-        <div class="container">
-            @if ((Session["Role"] is null))
-            {
-                <img src="~/Assets/images/Items/@Model.path">
-            }
-            else if (Session["Role"].Equals(Role.User))
-            {
-                <img src="~/Assets/images/Items/@Model.path">
-            }
-            else if (Session["Role"].Equals(Role.Admin))
-            {
-                if (Model.matomas)
+    }
+    else if (Session["Role"].Equals(Role.Admin))
+    {
+        <input type="button" value="Redaguoti prekę &raquo;" onclick="location.href = '@Url.Action("EditItemIndex", "Item", @Model)'" />
+    }
+    @{
+        <div id="divspec">
+            <div class="container">
+                @if ((Session["Role"] is null))
                 {
                     <img src="~/Assets/images/Items/@Model.path">
                 }
-                else
+                else if (Session["Role"].Equals(Role.User))
                 {
-                    <img style="filter: grayscale(100%)" src="~/Assets/images/Items/@Model.path">
-                    <div class="centered">Nematoma</div>
+                    <img src="~/Assets/images/Items/@Model.path">
                 }
-            }
+                else if (Session["Role"].Equals(Role.Admin))
+                {
+                    if (Model.matomas)
+                    {
+                        <img src="~/Assets/images/Items/@Model.path">
+                    }
+                    else
+                    {
+                        <img style="filter: grayscale(100%)" src="~/Assets/images/Items/@Model.path">
+                        <div class="centered">Nematoma</div>
+                    }
+                }
+
+            </div>
+
+            <div id="num"><p>@Model.kaina €</p></div>
+            <p><a class="btn btn-primary btn-lg">Į krepšelį &raquo;</a></p>
 
         </div>
+    }
 
-        <div id="num"><p>@Model.kaina €</p></div>
-        <p><a class="btn btn-primary btn-lg">Į krepšelį &raquo;</a></p>
-
+    <div id="divspec">
+        <div>
+            <ul>
+                <li> @Model.aprasymas</li>
+            </ul>
+        </div>
     </div>
-}
 
-<div id="divspec">
-    <div>
-        <ul>
-            <li> @Model.aprasymas</li>
-        </ul>
-    </div>
+    @if (!(Session["Role"] is null))
+    {
+
+
+        if (Session["Role"].Equals(Role.Admin))
+        {
+            <p>matomumas: @Model.matomas</p>
+            <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", Model)'" />
+            Html.RenderPartial("~/Views/Comment/NewComment.cshtml", new Comment(), new ViewDataDictionary { { "itemId", Model.id }, { "userId", ((User)Session["User"]).id }, { "comment", new Comment() } });
+        }
+        else if (Session["Role"].Equals(Role.User))
+        {
+            Html.RenderPartial("~/Views/Comment/NewComment.cshtml", new Comment(), new ViewDataDictionary { { "itemId", Model.id }, { "userId", ((User)Session["User"]).id }, { "comment", new Comment() } });
+        }
+    }
+    @Html.Action("Index", "Comment", new { itemId = Model.id });
 </div>
-
-@if (!(Session["Role"] is null))
-{
-
-
-    if (Session["Role"].Equals(Role.Admin))
-    {
-        <p>matomumas: @Model.matomas</p>
-        <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", Model)'" />
-        Html.RenderPartial("~/Views/Comment/NewComment.cshtml", new Comment(), new ViewDataDictionary { { "itemId", Model.id }, { "userId", ((User)Session["User"]).id }, { "comment", new Comment() } });
-    }
-    else if (Session["Role"].Equals(Role.User))
-    {
-        Html.RenderPartial("~/Views/Comment/NewComment.cshtml", new Comment(), new ViewDataDictionary { { "itemId", Model.id }, { "userId", ((User)Session["User"]).id }, { "comment", new Comment() } });
-    }
-}
-@Html.Action("Index", "Comment", new { itemId = Model.id });
 
