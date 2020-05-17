@@ -5,7 +5,7 @@ using System.Web;
 
 namespace komp.Models
 {
-    public class Basket
+    public class Cart
     {
         public string pavadinimas { get; set; }
 
@@ -17,7 +17,7 @@ namespace komp.Models
 
         public int id { get; set; }
 
-        public Basket()
+        public Cart()
         {
             pavadinimas = "";
             sukurimoData = DateTime.Now;

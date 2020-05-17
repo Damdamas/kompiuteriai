@@ -26,7 +26,7 @@ namespace komp.Assets.DbContext
 
             connection = new MySqlConnection(connectionString);
         }
-        public void createCart(Basket cart)
+        public void createCart(Cart cart)
         {
             var comp = new MySqlCompiler();
             var query = new Query("krepšelis").AsInsert(cart);
@@ -37,7 +37,7 @@ namespace komp.Assets.DbContext
             command.ExecuteReader();
             connection.Close();
         }
-        public void updateCart(Basket cart)
+        public void updateCart(Cart cart)
         {
             var comp = new MySqlCompiler();
             object temp;
