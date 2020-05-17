@@ -7,17 +7,17 @@ using komp.Models;
 
 namespace komp.Controllers
 {
-    public class BasketController : Controller
+    public class CartController : Controller
     {
         // GET: Basket
         public ActionResult Index()
         {
-            if (Session["Basket"] is null)
+            if (Session["Cart"] is null)
             {
-                Session["Basket"] = new Basket();
+                Session["Cart"] = new Cart();
             }
 
-            return View("~/Views/Home/Basket.cshtml", (Basket)Session["Basket"]);
+            return View("~/Views/Home/Cart.cshtml", (Cart)Session["Cart"]);
         }
 
 

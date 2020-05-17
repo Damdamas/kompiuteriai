@@ -154,20 +154,20 @@ namespace komp.Controllers
             return View("~/Views/Home/EditItem.cshtml", item);
         }
 
-        public ActionResult ToBasket(Item item)
+        public ActionResult ToCart(Item item)
         {
-            if (Session["Basket"] is null)
+            if (Session["Cart"] is null)
             {
-                Session["Basket"]= new Basket();
-                var bask = (Basket)Session["Basket"];
+                Session["Cart"]= new Cart();
+                var bask = (Cart)Session["Cart"];
                 bask.prekes.Add(item);
-                Session["Basket"] = bask;
+                Session["Cart"] = bask;
             }
             else
             {
-                var bask = (Basket)Session["Basket"];
+                var bask = (Cart)Session["Cart"];
                 bask.prekes.Add(item);
-                Session["Basket"] = bask;
+                Session["Cart"] = bask;
             }
 
             return RedirectToAction("Items");
