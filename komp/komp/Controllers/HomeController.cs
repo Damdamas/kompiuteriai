@@ -49,7 +49,7 @@ namespace komp.Controllers
 
             return View();
         }
-        public ActionResult Pirkti()
+        public ActionResult Order()
         {
             ViewBag.Message = "Your login page";
 
