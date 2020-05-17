@@ -19,7 +19,7 @@ namespace komp.Assets.DbContext
             var conn = new InnitConnectionStrings();
             conn.Init();
 
-            var database = "komiuteriu_komponentai";
+            var database = "komiuteriu_komponenta";
 
             string connectionString;
             connectionString = "SERVER=" + conn.ConnectionHost + ";" + "DATABASE=" +

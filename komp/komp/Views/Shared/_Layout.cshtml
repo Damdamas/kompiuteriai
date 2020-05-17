@@ -23,6 +23,19 @@
         position: absolute;
         right: 50%;
     }
+
+    body {
+        background-image: url('@Url.Content("~/Assets/images/backrounds/background.jpg")');
+        margin: 0;
+    }
+    .content{
+        color: black;
+        background-color: white;
+        min-height: 200px;
+        }
+    .footer {
+        color: white;
+    }
 </style>
 <html>
 <head>
@@ -33,45 +46,46 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Kompiuterija", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Pagrindinis", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Apie mus", "About", "Home")</li>
-                    <li>@Html.ActionLink("Kontaktai", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Prekės", "Items", "Item")</li>
-                    <li id="basket">@Html.ActionLink("Krepšelis", "Index", "Basket")</li>
-                    @{ if (Session["Role"] is null)
-                        {
-                            <li id="login">@Html.ActionLink("Prisijungti", "Index", "User")</li>
-                            <li id="register">@Html.ActionLink("Registruotis", "Register", "User")</li>
-                        }
-                        else if (Session["Role"].ToString() == komp.Models.tipai.Role.User || Session["Role"].ToString() == komp.Models.tipai.Role.Admin)
-                        {
-                            if (Session["Role"].ToString() == komp.Models.tipai.Role.Admin)
-                            {
-                                //<li id="test">@Html.ActionLink("test item", "NewItem", "Item")</li>
-                            }
-                            <li id="login">@Html.ActionLink("Atsijungti", "LogOut", "User")</li>
-                            <li id="register">@Html.ActionLink("Redaguoti profilį", "EditProfileIndex", "User")</li>
-                            <li id="User"> prisijungę kaip: @Session["Name"].ToString() </li>
-                        }
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Kompiuterija", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Pagrindinis", "Index", "Home")</li>
+                <li>@Html.ActionLink("Apie mus", "About", "Home")</li>
+                <li>@Html.ActionLink("Kontaktai", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Prekės", "Items", "Item")</li>
+                <li id="basket">@Html.ActionLink("Krepšelis", "Index", "Basket")</li>
+                @{ if (Session["Role"] is null)
+                   {
+                       <li id="login">@Html.ActionLink("Prisijungti", "Index", "User")</li>
+                       <li id="register">@Html.ActionLink("Registruotis", "Register", "User")</li>
+                   }
+                   else if (Session["Role"].ToString() == komp.Models.tipai.Role.User || Session["Role"].ToString() == komp.Models.tipai.Role.Admin)
+                   {
+                       if (Session["Role"].ToString() == komp.Models.tipai.Role.Admin)
+                       {
+                           //<li id="test">@Html.ActionLink("test item", "NewItem", "Item")</li>
+                       }
+                       <li id="login">@Html.ActionLink("Atsijungti", "LogOut", "User")</li>
+                       <li id="register">@Html.ActionLink("Redaguoti profilį", "EditProfileIndex", "User")</li>
+                       <li id="User"> prisijungę kaip: @Session["Name"].ToString() </li>
+                   }
 
-                    }
-                </ul>
-            </div>
+                }
+            </ul>
         </div>
     </div>
+</div>
+<div class="footer">
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -79,6 +93,7 @@
             <p>&copy; @DateTime.Now.Year - Kompiuterija</p>
         </footer>
     </div>
+</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
