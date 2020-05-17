@@ -87,11 +87,11 @@ namespace komp.Controllers
             return RedirectToAction("NewItem", "Item");
         }
 
-        public ActionResult Items()
+        public ActionResult ItemList()
         {
             var db = new ApplicationDbItem();
             var list = db.GetItems(10);
-            return View("~/Views/Home/Items.cshtml",list);
+            return View("~/Views/Home/ItemList.cshtml",list);
         }
 
         public ActionResult DisableItem(Item item)
@@ -170,7 +170,7 @@ namespace komp.Controllers
                 Session["Cart"] = bask;
             }
 
-            return RedirectToAction("Items");
+            return RedirectToAction("ItemList");
         }
     }
 }

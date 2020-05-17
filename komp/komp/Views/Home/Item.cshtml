@@ -79,7 +79,7 @@
             </div>
 
             <div id="num"><p>@Model.kaina €</p></div>
-            <p><a class="btn btn-primary btn-lg">Į krepšelį &raquo;</a></p>
+            <input style="background-color: greenyellow" type="button" value="Į Krepšelį &raquo;" onclick="location.href = '@Url.Action("ToCart", "Item", Model)'" />
 
         </div>
     }
