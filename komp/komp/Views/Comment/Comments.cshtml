@@ -1,10 +1,25 @@
 ﻿@model IList<komp.Models.Comment>
+<style>
+    .comment {
+        width: 95%;
+        color: black;
+        padding: 10px;
+        position: relative;
+        text-align:left;
+        border:solid;
+    }
+    .content2 {
+        width: 100%;
+        color: black;
+    }
+</style>
 
+<div class="content2">
 <h1>Komentatu sarasaaaaas</h1>
 @{
     foreach (var comment in Model)
     {
-        <p>@comment.turinys</p>
+        <p class="comment">Vartotojas: @comment.turinys</p">
     }
 }
-
+</div>

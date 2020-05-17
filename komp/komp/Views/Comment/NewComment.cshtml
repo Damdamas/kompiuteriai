@@ -18,7 +18,7 @@
         border-radius: 5px;
         border: 1px solid #ccc;
         box-shadow: 1px 1px 1px #999;
-        width: 50%;
+        width: 100%;
         resize: both;
         overflow: auto;
     }
@@ -30,14 +30,12 @@
     @Html.ValidationSummary(true, "Nepavyko prisijungti. Klaidingi prisijungimo duomenys.")
 
 
-    @Html.LabelFor(model => model.turinys, htmlAttributes: new { @class = "control-label col-md-2" })
-
     @Html.TextAreaFor(model => model.turinys)
     @Html.ValidationMessageFor(model => model.turinys, "", new { @class = "text-danger", required = "required" })
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Prisijungti" class="btn btn-default" />
+            <input type="submit" value="Komentuoti" class="btn btn-default" />
         </div>
     </div>
 

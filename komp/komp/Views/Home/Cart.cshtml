@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "basker";
 }
+<style>
+    .products {
+        color: black;
+    }
+</style>
+
 <div class="jumbotron">
 
     <ul class="products">
@@ -10,7 +16,7 @@
         {
             foreach (var item in Model.prekes)
             {
-                <li>
+                <li style="display:block">
 
                     <div class="container">
                         @if ((Session["Role"] is null))
