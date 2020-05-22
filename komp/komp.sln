@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "komp", "komp\komp.csproj", "{98D73AD5-C9C5-4CE4-88C2-D88A5B53B09F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D03CCB97-DA4D-4449-940F-CADD589E5B66}"
+	ProjectSection(SolutionItems) = preProject
+		komp\favicon.ico = komp\favicon.ico
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

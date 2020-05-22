@@ -1,0 +1,110 @@
+﻿@using komp.Controllers
+@using komp.Models.tipai
+@using Microsoft.Ajax.Utilities
+@model IEnumerable<komp.Models.Item>
+
+<style>
+    img {
+        max-width: 100%;
+        height:auto;
+        position: center;
+        margin: 0 auto;
+    }
+    .divimg {
+        position: relative;
+        max-height: 50%;
+        min-height: 50%;
+        overflow: hidden;
+    }
+
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: red;
+        font-size: 200%
+    }
+    .buttons {
+        position: absolute; 
+        bottom: 0;
+        font-size: 20px;
+        padding-bottom: 20px;
+    }
+    .grid-container {
+        width: auto;
+        height: auto;
+        display: grid;
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        grid-template-columns: auto auto auto;
+    }
+    .grid-item {
+        height: 400px;
+        overflow: visible;
+        position: relative;
+        font-size: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+
+    .data {
+        position: relative;
+        bottom: -10%;
+    }
+</style>
+<div class="content">
+    @if ((Session["Role"] is null))
+    {
+
+    }
+    else if (Session["Role"].Equals(Role.Admin))
+    {
+        <input type="button" value="Registruoti prekę &raquo;" onclick="location.href = '@Url.Action("NewItem", "Item")'" />
+    }
+
+    <div class="grid-container">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="grid-item">
+                <div class="divimg">
+                    @if ((Session["Role"] is null))
+                    {
+                        <img src="~/Assets/images/Items/@item.path">
+                    }
+                    else if (Session["Role"].Equals(Role.User))
+                    {
+                        <img src="~/Assets/images/Items/@item.path">
+                    }
+                    else if (Session["Role"].Equals(Role.Admin))
+                    {
+                        if (item.matomas)
+                        {
+                            <img src="~/Assets/images/Items/@item.path">
+                        }
+                        else
+                        {
+                            <img style="filter: grayscale(100%)" src="~/Assets/images/Items/@item.path">
+                            <div class="centered">Nematoma</div>
+                        }
+                    }
+                </div>
+
+                <div class="data">
+                    <h4>@item.pavadinimas</h4>
+                    <p>@item.kaina $</p>
+                </div>
+
+
+                <div class="buttons">
+                    <input type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item", new RouteValueDictionary(new {id = item.id}))'" />
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>

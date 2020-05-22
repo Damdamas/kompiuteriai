@@ -17,7 +17,6 @@ namespace komp.Controllers
         {  
             return View();
         }
-        [MyAuthorizationFilter]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -31,17 +30,12 @@ namespace komp.Controllers
 
             return View();
         }
+        [AnonymousAuthorizationFilter]
         public ActionResult Login()
         {
             ViewBag.Message = "Your login page";
-            naudotojas acc = new naudotojas();
+            User acc = new User();
             return View(acc);
-        }
-        public ActionResult Items()
-        {
-            ViewBag.Message = "Your login page";
-
-            return View();
         }
         public ActionResult Item()
         {
@@ -55,7 +49,7 @@ namespace komp.Controllers
 
             return View();
         }
-        public ActionResult Pirkti()
+        public ActionResult Order()
         {
             ViewBag.Message = "Your login page";
 

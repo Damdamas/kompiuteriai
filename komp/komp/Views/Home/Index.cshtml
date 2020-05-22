@@ -6,31 +6,44 @@
         max-width: 100%;
         max-height: 100%;
     }
+
     .portrait {
         height: 30%;
         width: 30%;
-        position:absolute;
+        position: absolute;
         left: 60%
     }
+
+    .row {
+        padding-left: 60px;
+        padding-bottom: 20px;
+    }
+
 </style>
-<div class="jumbotron">
-    <div class="portrait">
-        <img id="nuotrauka" src="~/Assets/images/happyComputer.png" />
+<div class="content">
+    @if (ViewBag.Message == "1")
+    {
+        <h1>Sveikiname užsiregistravus!</h1>
+    }
+    <div class="jumbotron">
+        <div class="portrait">
+            <img id="nuotrauka" src="~/Assets/images/happyComputer.png" />
+        </div>
+
+        <h1>Kompiuteriai</h1>
+        <p class="lead">Ačiū,kad pasirinkote mus!</p>
+        <p><a href='@Url.Action("Items", "Item")' class="btn btn-primary btn-lg">Ieškoti komponentų &raquo;</a></p>
+
     </div>
 
-    <h1>Kompiuteriai</h1>
-    <p class="lead">Ačiū,5555 kad pasirinkote mus!</p>
-    <p><a href='@Url.Action("Items", "Home")' class="btn btn-primary btn-lg">Ieškoti komponentų &raquo;</a></p>
-
-</div>
-
-}
-<div class="row">
-    <div class="col-md-4">
-        <h2>Komponentų gidas</h2>
-        <p>
-            Su šiuo įrankiu, jums nereiks jaudintis dėl komponentų suderinamumo. Visa tai atliks už Jus mūsų gidas!
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Sužinokite daugiau &raquo;</a></p>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Komponentų gidas</h2>
+            <p>
+                Su šiuo įrankiu, jums nereiks jaudintis dėl komponentų suderinamumo. Visa tai atliks už Jus mūsų gidas!
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Sužinokite daugiau &raquo;</a></p>
+        </div>
     </div>
 </div>

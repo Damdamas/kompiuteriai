@@ -4,16 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
-
+using komp.Models.tipai;
 
 namespace komp.Assets.Services
 {
-    public class MyAuthorizationFilter : ActionFilterAttribute, IAuthenticationFilter
+    public class AdminAuthorizationFilter : ActionFilterAttribute, IAuthenticationFilter
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
             //Check Session is Empty Then set as Result is HttpUnauthorizedResult 
-            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["UserID"])))
+            if (Convert.ToString(filterContext.HttpContext.Session["Role"])!=Role.Admin)
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }
@@ -33,7 +33,7 @@ namespace komp.Assets.Services
             {
                 filterContext.Result = new ViewResult
                 {
-                    ViewName = "Error"
+                    ViewName = "NotFound"
                 };
             }
         }

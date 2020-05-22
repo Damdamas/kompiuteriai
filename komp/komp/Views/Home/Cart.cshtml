@@ -1,0 +1,70 @@
+﻿@using komp.Models.tipai
+@model komp.Models.Cart
+@{
+    ViewBag.Title = "basker";
+}
+<style>
+    .products {
+        color: black;
+    }
+</style>
+
+<div class="jumbotron">
+
+    <ul class="products">
+        @if (Model.prekes.Count != 0)
+        {
+            foreach (var item in Model.prekes)
+            {
+                <li style="display:block">
+
+                    <div class="container">
+                        @if ((Session["Role"] is null))
+                        {
+                            <img src="~/Assets/images/Items/@item.path">
+                        }
+                        else if (Session["Role"].Equals(Role.User))
+                        {
+                            <img src="~/Assets/images/Items/@item.path">
+                        }
+                        else if (Session["Role"].Equals(Role.Admin))
+                        {
+                            if (item.matomas)
+                            {
+                                <img src="~/Assets/images/Items/@item.path">
+                            }
+                            else
+                            {
+                                <img style="filter: grayscale(100%)" src="~/Assets/images/Items/@item.path">
+                                <div class="centered">Nematoma</div>
+                            }
+                        }
+
+                    </div>
+
+                    <h4>@item.pavadinimas</h4>
+                    <p>@item.kaina $</p>
+
+                    @if ((Session["Role"] is null))
+                    {
+
+                    }
+                    else if (Session["Role"].Equals(Role.Admin))
+                    {
+                        <p>matomumas: @item.matomas</p>
+                        <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", new RouteValueDictionary(new {id = item.id, visible = item.matomas}))'"/>
+                    }
+
+                    <input type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item", new RouteValueDictionary(new {id = item.id}))'"/>
+
+
+                </li>
+            }
+        }
+        else
+        {
+            <h1>Tuščias krepšelis</h1>
+        }
+    </ul>
+
+</div>
