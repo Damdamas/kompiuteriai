@@ -106,11 +106,13 @@
 
                     </li>
             }
-            <div>
-                <hr class="hr" />
-                <h4 class="header">Suma: @suma</h4>
-                <p><a class="btn btn-default" href="link">Pirkti &raquo;</a></p>
-            </div>
+    <div>
+        <hr class="hr" />
+        <h4 class="header">Suma: @suma</h4>
+       
+            <input type="button" value="Pirkti &raquo;" onclick="location.href = '@Url.Action("Buy", "Cart")'" />
+       
+    </div>
         }
         else
         {
