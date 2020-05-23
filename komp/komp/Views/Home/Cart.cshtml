@@ -6,22 +6,69 @@
 <style>
     .products {
         color: black;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .header {
+        color: black;
+    }
+
+    .hr {
+        width: 100%;
+        background-color: black;
+        height: 5px;
+        margin-right: auto;
+        color: black;
+    }
+
+    .line {
+        width: 50%;
+        height: 100%;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .childline1 {
+        display: inline-block;
+        width: 50%;
+        height: 25%;
+    }
+    .childline2 {
+        display: inline-block;
+        width: 25%;
+        height: 25%;
+    }
+    .childline3 {
+        display: inline-block;
+        width: 10%;
+        height: 25%;
+    }
+
+    .img {
+        display: inline-block;
+        width: 10%;
+        height: 10%;
     }
 </style>
 
 <div class="jumbotron">
 
     <ul class="products">
+        @{ float suma = 0; }
         @if (Model.prekes.Count != 0)
         {
+            <h1>Krepšelis</h1>
+            <hr class="hr" />
             foreach (var item in Model.prekes)
             {
-                <li style="display:block">
+                    <li style="display:block;">
 
-                    <div class="container">
                         @if ((Session["Role"] is null))
                         {
-                            <img src="~/Assets/images/Items/@item.path">
+                            <img class="img" src="~/Assets/images/Items/@item.path">
                         }
                         else if (Session["Role"].Equals(Role.User))
                         {
@@ -40,26 +87,30 @@
                             }
                         }
 
-                    </div>
 
-                    <h4>@item.pavadinimas</h4>
-                    <p>@item.kaina $</p>
+                        @{ suma = suma + item.kaina; }
 
-                    @if ((Session["Role"] is null))
-                    {
+                        @if ((Session["Role"] is null))
+                        {
 
-                    }
-                    else if (Session["Role"].Equals(Role.Admin))
-                    {
-                        <p>matomumas: @item.matomas</p>
-                        <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", new RouteValueDictionary(new {id = item.id, visible = item.matomas}))'"/>
-                    }
+                        }
+                        else if (Session["Role"].Equals(Role.Admin))
+                        {
+                            <p>matomumas: @item.matomas</p>
+                            <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", new RouteValueDictionary(new {id = item.id, visible = item.matomas}))'" />
+                        }
 
-                    <input type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item", new RouteValueDictionary(new {id = item.id}))'"/>
+                        <h4 class="childline1">@item.pavadinimas</h4>
+                        <p class="childline2">@item.kaina $</p>
+                        <input class="childline3" type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item", new RouteValueDictionary(new {id = item.id}))'" />
 
-
-                </li>
+                    </li>
             }
+            <div>
+                <hr class="hr" />
+                <h4 class="header">Suma: @suma</h4>
+                <p><a class="btn btn-default" href="link">Pirkti &raquo;</a></p>
+            </div>
         }
         else
         {

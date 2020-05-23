@@ -3,28 +3,37 @@
     ViewBag.Title = "NotFound";
 }
 
+    <style>
+        .content {
+            padding-left: 30px;
+            padding-top: 10px;
+        }
+        .btn {
+            border-style: inset;
+        }
+    </style>
+    <div class="content">
+        <h1>  Šis puslapis nerastas :(</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <p>
+                    Šis puslapis neegzistuoja arba Jūs neturite privilegijos matyti šiai informacijai. Daugiau klausimų:
+                </p>
+                <a href="../Home/Contact.cshtml"> Mūsų kontaktų puslapyje</a>
+                <p></p>
+                <div>
+                    <button type="button" class="btn btn-secondary" href="@Url.Action("Index", "Home")" class="elements">
+                        <span>Grįžti į pradinį puslapį &raquo;</span>
+                    </button>
+                </div>
+                <p></p>
+                <div>
+                    <button type="button" class="btn btn-secondary" href="@Url.Action("Login", "Home")" class="elements">
+                        <span>Prisijungti &raquo;</span>
+                    </button>
+                </div>
 
-
-    <h1>  Šis puslapis nerastas :(</h1>
-<div class="row">
-    <div class="col-md-4">
-        <p>
-            Šis puslapis neegzistuoja arba Jūs neturite privilegijos matyti šiai informacijai. Daugiau klausimų:
-        </p>
-        <a href="../Home/Contact.cshtml"> Mūsų kontaktų puslapyje</a>
-        <p></p>
-        <div>
-            <button type="button" class="btn btn-secondary" href="@Url.Action("Index", "Home")" class="elements">
-                <span>Grįžti į pradinį puslapį &raquo;</span>
-            </button>
+            </div>
         </div>
-        <p></p>
-        <div>
-            <button type="button" class="btn btn-secondary" href="@Url.Action("Login", "Home")" class="elements">
-                <span>Prisijungti &raquo;</span>
-            </button>
-        </div>
-
     </div>
-</div>
 
