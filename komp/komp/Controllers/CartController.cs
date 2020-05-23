@@ -19,7 +19,14 @@ namespace komp.Controllers
 
             return View("~/Views/Home/Cart.cshtml", (Cart)Session["Cart"]);
         }
-
+        public ActionResult Buy()
+        {
+            return View("Purchase");
+        }
+        public ActionResult CompleteBuy()
+        {
+            return View("~/Views/Home/Index.cshtml");
+        }
 
     }
 }
