@@ -23,6 +23,8 @@ namespace komp.Models
         public string mokejimas { get; set; }
 
         public string busena { get; set; }
+
+        public int krepselisId { get; set;}
         
         public string id { get; set; }
     }

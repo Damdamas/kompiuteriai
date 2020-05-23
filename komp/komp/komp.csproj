@@ -379,6 +379,7 @@
     <Content Include="Views\Comment\Comments.cshtml" />
     <Content Include="Views\Comment\NewComment.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Cart\Purchase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
