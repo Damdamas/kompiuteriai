@@ -10,19 +10,19 @@ namespace komp.Models.enumTypes
     {
         [Description("korpusas")]
        korpusas,
-       [Description("pagrindinė plokštė")]
+       [Description("pagrindinėPlokštė")]
         pagrindinėPlokštė,
         [Description("procesorius")]
         procesorius,
-        [Description("vaizdo plokštė")]
+        [Description("vaizdoPlokštė")]
         vaizdoPlokštė,
         [Description("ram")]
         ram,
-        [Description("atminties įrenginys")]
+        [Description("atmintiesįrenginys")]
         atmintiesĮrenginys,
         [Description("aušintuvas")]
         aušintuvas,
-        [Description("maitinimo blokas")]
+        [Description("maitinimoBlokas")]
         maitinimoBlokas,
         [Description("monitorius")]
         monitorius,
