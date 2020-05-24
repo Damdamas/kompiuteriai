@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Deployment.Internal;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -20,6 +21,7 @@ namespace komp.Controllers
     public class ItemController : Controller
     {
         // GET: Item
+        private bool guide = false;
         public ActionResult CreateItem(Item item)
         {
 
@@ -27,7 +29,7 @@ namespace komp.Controllers
             string imgpath = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString() + ".jpg";
             try
             {
-                if (item.itemPath != null)
+                if (!(item.itemPath is null))
                 {
                     string pic = System.IO.Path.GetFileName(item.itemPath.FileName);
                     // file is uploaded
@@ -56,7 +58,7 @@ namespace komp.Controllers
             var db = new ApplicationDbItem();
             
             db.CreateItem(item,imgpath);
-            return View("~/Views/Home/NewItem.cshtml");
+            return RedirectToAction("ItemList");
         }
         [AdminAuthorizationFilter]
         public ActionResult NewItem()
@@ -90,7 +92,7 @@ namespace komp.Controllers
         public ActionResult ItemList()
         {
             var db = new ApplicationDbItem();
-            var list = db.GetItems(10);
+            var list = db.GetItems(1000);
             return View("~/Views/Home/ItemList.cshtml",list);
         }
 
@@ -114,7 +116,7 @@ namespace komp.Controllers
             string imgpath = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString() + ".jpg";
             try
             {
-                if (item.itemPath != null)
+                if (!(item.itemPath is null))
                 {
                     string pic = System.IO.Path.GetFileName(item.itemPath.FileName);
                     // file is uploaded
@@ -141,12 +143,13 @@ namespace komp.Controllers
             }
             var db = new ApplicationDbItem();
             db.UpdateItem(item, path);
+            if(!(path is null))
             if(!item.path.Equals(path))
             System.IO.File.Delete(path = System.IO.Path.Combine(
                 Server.MapPath("~/Assets/images/Items"),
                 item.path));
 
-            return View("~/Views/Home/EditItem.cshtml");
+            return RedirectToAction("ItemList");
         }
 
         public ActionResult EditItemIndex(Item item)
@@ -169,7 +172,10 @@ namespace komp.Controllers
                 bask.prekes.Add(item);
                 Session["Cart"] = bask;
             }
-
+            if(guide)
+            {
+                Guide(item);
+            }
             return RedirectToAction("ItemList");
         }
         public ActionResult Filter()
@@ -177,6 +183,16 @@ namespace komp.Controllers
             var db = new ApplicationDbItem();
             var list = db.GetItems(10000);
             return View("~/Views/Home/ItemList.cshtml", list);
+        }
+        public void Guide(Item item)
+        {
+            var bask = (Cart)Session["Cart"];
+            
+        }
+        private void GetAtributes(Item item)
+        {
+            string atributes = item.aprasymas;
+            
         }
     }
 }

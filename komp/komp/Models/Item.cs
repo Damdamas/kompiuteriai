@@ -29,7 +29,7 @@ namespace komp.Models
         public string aprasymas { get; set; }
 
 
-
+        [Required]
         public string tipas { get; set; }
 
 
