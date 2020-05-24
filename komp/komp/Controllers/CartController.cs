@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using komp.Assets.DbContext;
 using komp.Models;
 
 namespace komp.Controllers
@@ -25,8 +26,12 @@ namespace komp.Controllers
         }
         public ActionResult CompleteBuy(Order order)
         {
+            var db = new ApplicationDbCart();
+            var dbOrder = new ApplicationDbOrder();
             Cart crt = (Cart)Session["Cart"];
-
+            crt.id = order.krepselisId;
+            db.createCart(crt);
+            dbOrder.createOrder(order);
             return View("~/Views/Home/Index.cshtml");
         }
 
