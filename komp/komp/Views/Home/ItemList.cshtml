@@ -71,10 +71,11 @@
 
         @Html.DropDownList("value",
        EnumHelper.GetSelectList(typeof(enumItemType))
-       , "Select Time")
+       , "Select Type")
         <input type="submit" value="Submit" />
     }
-
+    @{if (Model.Count() == 0) {
+        <h1>Prekių pagal šį filtrą nėra</h1>} }
 
     @if ((Session["Role"] is null))
     {

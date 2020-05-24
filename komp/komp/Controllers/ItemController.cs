@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using System.Web.UI;
 using Google.Protobuf.WellKnownTypes;
 using komp.Assets.DbContext;
 using komp.Assets.Services;
@@ -183,12 +184,21 @@ namespace komp.Controllers
             }
             return RedirectToAction("ItemList");
         }
-        public ActionResult Filter(int value)
+        public ActionResult Filter(object value)
         {
-            var cc = EnumHelper.GetSelectList(typeof(enumItemType))[value].Text;
-
             var db = new ApplicationDbItem();
-            var list = db.GetItems(10000);
+
+            if (((string[])value)[0].Equals(""))
+            {
+                return View("~/Views/Home/ItemList.cshtml", db.GetItems(1000));
+            }
+        
+            var cc = EnumHelper.GetSelectList(typeof(enumItemType))[Int32.Parse(((string[])value)[0])].Text;
+            var list = from d in db.GetItems(10000)
+                       orderby d.kaina
+                       where d.tipas == cc
+                       select d;
+
             return View("~/Views/Home/ItemList.cshtml", list);
         }
         public void Guide(Item item)
