@@ -27,11 +27,7 @@ namespace komp.Assets.DbContext
 
             connection = new MySqlConnection(connectionString);
         }
-<<<<<<< HEAD
         public void createCart(Cart cart, int userid = -1)
-=======
-        public void createCart(Cart cart, int useridr = -1)
->>>>>>> e80ab15b22eb49c3152c9d913a00cc8c02e8bf74
         {
             var comp = new MySqlCompiler();
             var query = new Query("krepselis").AsInsert(cart);

@@ -29,14 +29,9 @@ namespace komp.Controllers
             var db = new ApplicationDbCart();
             var dbOrder = new ApplicationDbOrder();
             Cart crt = (Cart)Session["Cart"];
-<<<<<<< HEAD
             crt.id = order.krepselisId;
             db.createCart(crt);
             dbOrder.createOrder(order);
-=======
-
-
->>>>>>> e80ab15b22eb49c3152c9d913a00cc8c02e8bf74
             return View("~/Views/Home/Index.cshtml");
         }
 
