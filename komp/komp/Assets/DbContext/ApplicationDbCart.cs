@@ -27,16 +27,57 @@ namespace komp.Assets.DbContext
 
             connection = new MySqlConnection(connectionString);
         }
-        public void createCart(Cart cart, int useridr = -1)
+        public void createCart(Cart cart, int userid = -1)
         {
             var comp = new MySqlCompiler();
-            var query = new Query("krepšelis").AsInsert(cart);
+            var query = new Query("krepselis").AsInsert(cart);
 
+            var command = new MySqlCommand("INSERT INTO krepselis (pavadinimas, sukurimoData, patvirtintas, naudotojasId) VALUES" +
+                " ('',@text1, @text2, @text3)", connection);
+            command.Parameters.AddWithValue("@text1", cart.sukurimoData);
+            command.Parameters.AddWithValue("@text2", cart.patvirtintas);
+            if(userid > 0)
+            {
+                command.Parameters.AddWithValue("@text3", userid);
+            }
+            else
+            {
+                command.Parameters.AddWithValue("@text3", 0);
+            }
+           
 
-            var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
             connection.Open();
             command.ExecuteReader();
             connection.Close();
+            addItemsToCart(cart);
+        }
+        public void addItemsToCart(Cart cart)
+        {
+            var comp = new MySqlCompiler();
+            var query = new Query("krepselis").AsMax("id");
+            var command = new MySqlCommand(comp.Compile(query).ToString(), connection);
+            connection.Open();
+            var reader = command.ExecuteReader();
+            var temp = new Cart();
+            while (reader.Read())
+            {
+                temp.id = (int)reader[0];
+            }
+            connection.Close();
+            for (int i = 0; i<cart.prekes.Count;i++)
+            {
+                connection.Open();
+                var obj = new
+                {
+                    krepselisId = temp.id,
+                    prekeId = cart.prekes[i].id
+                };
+                var q = new Query("KrepselisPreke").AsInsert(obj);
+                var command1 = new MySqlCommand(comp.Compile(q).ToString(), connection);
+                command1.ExecuteNonQuery();
+                connection.Close();
+            }
+            
         }
         public void updateCart(Cart cart)
         {

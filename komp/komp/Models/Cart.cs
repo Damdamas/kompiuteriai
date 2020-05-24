@@ -20,7 +20,7 @@ namespace komp.Models
         public Cart()
         {
             pavadinimas = "";
-            sukurimoData = DateTime.Now;
+            sukurimoData = DateTime.Now.Date;
             patvirtintas = false;
             prekes = new List<Item>();
             id = 0;

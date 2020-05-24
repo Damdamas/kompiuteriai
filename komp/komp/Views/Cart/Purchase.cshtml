@@ -159,7 +159,7 @@
             @Html.LabelFor(model => model.mokejimas, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.mokejimas,
-                   new SelectList(new string[] { "el.bankininkyste", "atsiemant prekę" }),
+                   new SelectList(new string[] { "el.bankininkyste", "atsiimant prekes" }),
                      "Select My Type",
                      new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.mokejimas, "", new { @class = "text-danger", required = "required" })

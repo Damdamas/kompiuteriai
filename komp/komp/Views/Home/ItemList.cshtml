@@ -3,7 +3,9 @@
 @using komp.Models.enumTypes
 @using Microsoft.Ajax.Utilities
 @model IEnumerable<komp.Models.Item>
-
+@{
+    ViewBag.Title = "Filter";
+}
 <style>
     img {
         max-width: 100%;
@@ -60,11 +62,14 @@
 </style>
 <div class="content">
 
-    <h1>Pasirinkite, pagal kokį tipą norite matyti rezultatus
+    <h1>
+        Pasirinkite, pagal kokį tipą norite matyti rezultatus
     </h1>
-    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Filter", "Item", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        @Html.DropDownList("LogOffTime",
+        @Html.AntiForgeryToken()
+
+        @Html.DropDownList("value",
        EnumHelper.GetSelectList(typeof(enumItemType))
        , "Select Time")
         <input type="submit" value="Submit" />
