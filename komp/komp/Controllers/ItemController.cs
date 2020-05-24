@@ -118,6 +118,8 @@ namespace komp.Controllers
 
         public ActionResult EditItem(Item item)
         {
+            var db = new ApplicationDbItem();
+            var itm = db.GetItemById(item.id);
             string path = item.path;
             string imgpath = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString() + ".jpg";
             try
@@ -131,29 +133,31 @@ namespace komp.Controllers
                         Server.MapPath("~/Assets/images/Items"),
                         imgpath);
                     item.itemPath.SaveAs(path);
-
                 }
-                var tipas = (enumItemType)Enum.Parse(typeof(enumItemType), item.tipas, true);
-                item.tipas = tipas
-                                 .GetType()
-                                 .GetMember(tipas.ToString())
-                                 .FirstOrDefault()
-                                 ?.GetCustomAttribute<DescriptionAttribute>()
-                                 ?.Description
-                             ?? tipas.ToString();
+                else
+                    item.path = itm.path;
+                if (!(item.tipas is null))
+                {
+                    var tipas = (enumItemType)Enum.Parse(typeof(enumItemType), item.tipas, true);
+                    item.tipas = tipas
+                                     .GetType()
+                                     .GetMember(tipas.ToString())
+                                     .FirstOrDefault()
+                                     ?.GetCustomAttribute<DescriptionAttribute>()
+                                     ?.Description
+                                 ?? tipas.ToString();
+                }
             }
             catch (Exception e)
             {
 
                 throw;
             }
-            var db = new ApplicationDbItem();
-            db.UpdateItem(item, path);
+            db.UpdateItem(item, imgpath);
             if(!(path is null))
-            if(!item.path.Equals(path))
-            System.IO.File.Delete(path = System.IO.Path.Combine(
+            System.IO.File.Delete(itm.path = System.IO.Path.Combine(
                 Server.MapPath("~/Assets/images/Items"),
-                item.path));
+                itm.path));
 
             return RedirectToAction("ItemList");
         }

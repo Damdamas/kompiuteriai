@@ -159,8 +159,9 @@ namespace komp.Assets.DbContext
                 ieskomas.aprasymas = reader["aprasymas"].ToString();
                 ieskomas.id = (int)reader["id"];
             }
-
+            connection.Close();
             return ieskomas;
+
         }
 
     }
