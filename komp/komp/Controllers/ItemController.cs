@@ -39,13 +39,13 @@ namespace komp.Controllers
                 {
                     string pic = System.IO.Path.GetFileName(item.itemPath.FileName);
                     // file is uploaded
-                    
+
                     path = System.IO.Path.Combine(
                         Server.MapPath("~/Assets/images/Items"),
                         imgpath);
                     item.itemPath.SaveAs(path);
 
-                } 
+                }
                 var tipas = (enumItemType)Enum.Parse(typeof(enumItemType), item.tipas, true);
                 item.tipas = tipas
                                  .GetType()
@@ -57,13 +57,13 @@ namespace komp.Controllers
             }
             catch (Exception e)
             {
-                
+
                 throw;
             }
-           
+
             var db = new ApplicationDbItem();
-            
-            db.CreateItem(item,imgpath);
+
+            db.CreateItem(item, imgpath);
             return RedirectToAction("ItemList");
         }
         [AdminAuthorizationFilter]
@@ -99,7 +99,7 @@ namespace komp.Controllers
         {
             var db = new ApplicationDbItem();
             var list = db.GetItems(1000);
-            return View("~/Views/Home/ItemList.cshtml",list);
+            return View("~/Views/Home/ItemList.cshtml", list);
         }
 
         public ActionResult DisableItem(Item item)
@@ -113,7 +113,7 @@ namespace komp.Controllers
         {
             var db = new ApplicationDbItem();
             var item = db.GetItemById(id);
-            return View("~/Views/Home/Item.cshtml",item);
+            return View("~/Views/Home/Item.cshtml", item);
         }
 
         public ActionResult EditItem(Item item)
@@ -121,6 +121,8 @@ namespace komp.Controllers
             var db = new ApplicationDbItem();
             var itm = db.GetItemById(item.id);
             string path = item.path;
+            if (item.tipas is null)
+                item.tipas = itm.tipas;
             string imgpath = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString() + ".jpg";
             try
             {
@@ -133,6 +135,7 @@ namespace komp.Controllers
                         Server.MapPath("~/Assets/images/Items"),
                         imgpath);
                     item.itemPath.SaveAs(path);
+                    item.path = imgpath;
                 }
                 else
                     item.path = itm.path;
@@ -153,11 +156,15 @@ namespace komp.Controllers
 
                 throw;
             }
-            db.UpdateItem(item, imgpath);
-            if(!(path is null))
-            System.IO.File.Delete(itm.path = System.IO.Path.Combine(
-                Server.MapPath("~/Assets/images/Items"),
-                itm.path));
+            db.UpdateItem(item, item.path);
+            if (!itm.path.Equals(item.path))
+                if (!(path is null))
+                {
+                    db.UpdateItem(item, imgpath);
+                    System.IO.File.Delete(itm.path = System.IO.Path.Combine(
+                        Server.MapPath("~/Assets/images/Items"),
+                        itm.path));
+                }
 
             return RedirectToAction("ItemList");
         }
@@ -171,7 +178,7 @@ namespace komp.Controllers
         {
             if (Session["Cart"] is null)
             {
-                Session["Cart"]= new Cart();
+                Session["Cart"] = new Cart();
                 var bask = (Cart)Session["Cart"];
                 bask.prekes.Add(item);
                 Session["Cart"] = bask;
@@ -182,7 +189,7 @@ namespace komp.Controllers
                 bask.prekes.Add(item);
                 Session["Cart"] = bask;
             }
-            if(guide)
+            if (guide)
             {
                 Guide(item);
             }
@@ -196,7 +203,7 @@ namespace komp.Controllers
             {
                 return View("~/Views/Home/ItemList.cshtml", db.GetItems(1000));
             }
-        
+
             var cc = EnumHelper.GetSelectList(typeof(enumItemType))[Int32.Parse(((string[])value)[0])].Text;
             var list = from d in db.GetItems(10000)
                        orderby d.kaina
@@ -208,12 +215,12 @@ namespace komp.Controllers
         public void Guide(Item item)
         {
             var bask = (Cart)Session["Cart"];
-            
+
         }
         private void GetAtributes(Item item)
         {
             string atributes = item.aprasymas;
-            
+
         }
     }
 }
