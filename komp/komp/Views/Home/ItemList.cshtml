@@ -86,11 +86,18 @@
         <input type="button" value="Registruoti prekę &raquo;" onclick="location.href = '@Url.Action("NewItem", "Item")'" />
     }
 
-    <div class="grid-container">
+<div class="grid-container">
 
-        @foreach (var item in Model)
+    @foreach (var item in Model)
+    {
+        if ((Session["Role"] is null) && item.matomas==false)
         {
-
+            continue;
+            if (Session["Role"].Equals(Role.User))
+            {
+                continue;
+            }
+        }
             <div class="grid-item">
                 <div class="divimg">
                     @if ((Session["Role"] is null))
@@ -122,11 +129,10 @@
 
 
                 <div class="buttons">
-                    <input type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item", new RouteValueDictionary(new {id = item.id}))'" />
+                    <input type="button" value="Peržiūra &raquo;" onclick="location.href = '@Url.Action("Item", "Item", new RouteValueDictionary(new { id = item.id }))'" />
                 </div>
             </div>
+    }
 
-        }
-
-    </div>
+</div>
 </div>
