@@ -1,80 +1,86 @@
 ﻿@model komp.Models.User
-
-
-<h1>Registracija</h1>
-
-@using (Html.BeginForm("Register","User")) 
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.vardas, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.vardas, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.vardas, "", new { @class = "text-danger", required = "required" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.pavarde, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.pavarde, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.pavarde, "", new { @class = "text-danger", required = "required" })
-        </div>
-    </div>
-    @if (ViewBag.Message2 == "2")
-    {
-        <p class = "text-danger">Toks elektroninis paštas jau naudojamas.</p>
+<style>
+    .content {
+        padding:10px;
+        padding-left:20px;
     }
-    <div class="form-group">
-        @Html.LabelFor(model => model.elpastas, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.elpastas, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.elpastas, "", new { @class = "text-danger", required = "required" })
-        </div>
-    </div>
-    @if (ViewBag.Message3 == "3")
-    {
-        <p class = "text-danger">Toks prisijungimo vardas jau panaudotas</p>
-    }
-    <div class="form-group">
-        @Html.LabelFor(model => model.prisijungimoVardas, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.prisijungimoVardas, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.prisijungimoVardas, "", new { @class = "text-danger", required = "required" })
-        </div>
-    </div>
+</style>
+    <div class="content">
+        <h1>Registracija</h1>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.slaptazodis, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.slaptazodis, new { htmlAttributes = new { @class = "form-control", type="password"} })
-            @Html.ValidationMessageFor(model => model.slaptazodis, "", new { @class = "text-danger", required = "required" })
-        </div>
-    </div>
+        @using (Html.BeginForm("Register", "User"))
+        {
+            @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.telnumeris, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.telnumeris, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.telnumeris, "", new { @class = "text-danger", required = "required" })
-        </div>
-    </div>
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.vardas, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.vardas, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.vardas, "", new { @class = "text-danger", required = "required" })
+                    </div>
+                </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.adresas, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.adresas, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.adresas, "", new { @class = "text-danger", required = "required" })
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.pavarde, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.pavarde, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pavarde, "", new { @class = "text-danger", required = "required" })
+                    </div>
+                </div>
+                @if (ViewBag.Message2 == "2")
+                {
+                    <p class="text-danger">Toks elektroninis paštas jau naudojamas.</p>
+                }
+                <div class="form-group">
+                    @Html.LabelFor(model => model.elpastas, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.elpastas, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.elpastas, "", new { @class = "text-danger", required = "required" })
+                    </div>
+                </div>
+                @if (ViewBag.Message3 == "3")
+                {
+                    <p class="text-danger">Toks prisijungimo vardas jau panaudotas</p>
+                }
+                <div class="form-group">
+                    @Html.LabelFor(model => model.prisijungimoVardas, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.prisijungimoVardas, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.prisijungimoVardas, "", new { @class = "text-danger", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.slaptazodis, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.slaptazodis, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                        @Html.ValidationMessageFor(model => model.slaptazodis, "", new { @class = "text-danger", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.telnumeris, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.telnumeris, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.telnumeris, "", new { @class = "text-danger", required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.adresas, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.adresas, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.adresas, "", new { @class = "text-danger", required = "required" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Registruotis" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
     </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Registruotis" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
 
