@@ -29,7 +29,7 @@ namespace komp.Controllers
             string imgpath = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString() + ".jpg";
             try
             {
-                if (item.itemPath != null)
+                if (!(item.itemPath is null))
                 {
                     string pic = System.IO.Path.GetFileName(item.itemPath.FileName);
                     // file is uploaded
@@ -58,7 +58,7 @@ namespace komp.Controllers
             var db = new ApplicationDbItem();
             
             db.CreateItem(item,imgpath);
-            return View("~/Views/Home/NewItem.cshtml");
+            return RedirectToAction("ItemList");
         }
         [AdminAuthorizationFilter]
         public ActionResult NewItem()
