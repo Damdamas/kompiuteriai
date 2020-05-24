@@ -23,8 +23,10 @@ namespace komp.Controllers
         {
             return View("Purchase");
         }
-        public ActionResult CompleteBuy()
+        public ActionResult CompleteBuy(Order order)
         {
+            Cart crt = (Cart)Session["Cart"];
+
             return View("~/Views/Home/Index.cshtml");
         }
 

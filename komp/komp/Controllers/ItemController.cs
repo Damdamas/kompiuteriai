@@ -172,5 +172,11 @@ namespace komp.Controllers
 
             return RedirectToAction("ItemList");
         }
+        public ActionResult Filter()
+        {
+            var db = new ApplicationDbItem();
+            var list = db.GetItems(10000);
+            return View("~/Views/Home/ItemList.cshtml", list);
+        }
     }
 }
