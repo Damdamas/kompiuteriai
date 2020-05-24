@@ -1,6 +1,7 @@
 ﻿@using komp.Models
 @using komp.Models.tipai
 @model komp.Models.Item
+@using System.Text.RegularExpressions
 
 
 <style>
@@ -42,6 +43,25 @@
         position: relative;
         text-align: center;
     }
+
+    .img {
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+    }
+
+    .table {
+        padding-left: 20px;
+        background-color: white;
+        text-align: left;
+        display: block;
+        padding: 0px;
+    }
+    th {
+        padding-left: 20px;
+    }
 </style>
 <div class="content">
     @if ((Session["Role"] is null))
@@ -57,17 +77,17 @@
             <div class="container">
                 @if ((Session["Role"] is null))
                 {
-                    <img src="~/Assets/images/Items/@Model.path">
+                    <img class="img" src="~/Assets/images/Items/@Model.path">
                 }
                 else if (Session["Role"].Equals(Role.User))
                 {
-                    <img src="~/Assets/images/Items/@Model.path">
+                    <img class="img" src="~/Assets/images/Items/@Model.path">
                 }
                 else if (Session["Role"].Equals(Role.Admin))
                 {
                     if (Model.matomas)
                     {
-                        <img src="~/Assets/images/Items/@Model.path">
+                        <img class="img" src="~/Assets/images/Items/@Model.path">
                     }
                     else
                     {
@@ -84,11 +104,40 @@
         </div>
     }
 
+
+    @{
+        var data = Regex.Split(Model.aprasymas, @"\%\$");
+        List<string> table = new List<string>();
+        var pav = "";
+        for (int i = 0; i < data.Length; i++)
+        {
+            if (i > 0)
+            {
+                var sdata = Regex.Split(data[i], @":");
+                for (int a = 0; a < sdata.Length; a++)
+                {
+                    table.Add(sdata[a]);
+                }
+            }
+            else
+            {
+                pav = data[i];
+            }
+        }
+
+    }
+
     <div id="divspec">
         <div>
-            <ul>
-                <li> @Model.aprasymas</li>
-            </ul>
+            <h2>@pav</h2>
+            <table>
+                @for (int i = 0; i < table.Count / 3; i++)
+                {
+                    <tr class="table" style="background-color:white;">
+                        <th>  @table[i * 3]: @table[i * 3 + 2]</th>
+                    </tr>
+                }
+            </table>
         </div>
     </div>
 
@@ -109,4 +158,3 @@
     }
     @Html.Action("Index", "Comment", new { itemId = Model.id });
 </div>
-
