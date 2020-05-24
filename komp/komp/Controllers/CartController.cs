@@ -27,6 +27,7 @@ namespace komp.Controllers
         {
             Cart crt = (Cart)Session["Cart"];
 
+
             return View("~/Views/Home/Index.cshtml");
         }
 

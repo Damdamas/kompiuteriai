@@ -6,6 +6,7 @@ using SqlKata.Compilers;
 using MySql.Data.MySqlClient;
 using System.Web;
 using komp.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace komp.Assets.DbContext
 {
@@ -26,7 +27,7 @@ namespace komp.Assets.DbContext
 
             connection = new MySqlConnection(connectionString);
         }
-        public void createCart(Cart cart)
+        public void createCart(Cart cart, int useridr = -1)
         {
             var comp = new MySqlCompiler();
             var query = new Query("krepšelis").AsInsert(cart);

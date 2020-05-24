@@ -74,8 +74,9 @@ namespace komp.Assets.DbContext
         public void UpdateItem(Item item, string path)
         {
             var comp = new MySqlCompiler();
-
-            var c = new
+            var c = new object();
+            if(!(path is null))
+            c = new
             {
                 pavadinimas = item.pavadinimas,
                 kaina = item.kaina,
@@ -85,6 +86,16 @@ namespace komp.Assets.DbContext
                 imagePath = path,
                 matomas = item.matomas
             };
+            else
+                c = new
+                {
+                    pavadinimas = item.pavadinimas,
+                    kaina = item.kaina,
+                    aprasymas = item.aprasymas,
+                    tipas = item.tipas,
+                    reitingas = item.reitingas,
+                    matomas = item.matomas
+                };
 
             var query = new Query("preke").AsUpdate(c).Where("id", item.id);
             var cc = comp.Compile(query).ToString();
