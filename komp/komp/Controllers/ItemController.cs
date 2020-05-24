@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Html;
 using Google.Protobuf.WellKnownTypes;
 using komp.Assets.DbContext;
 using komp.Assets.Services;
@@ -22,6 +23,10 @@ namespace komp.Controllers
     {
         // GET: Item
         private bool guide = false;
+        public class dropdown
+        {
+            public string value { get; set; }
+        }
         public ActionResult CreateItem(Item item)
         {
 
@@ -178,8 +183,10 @@ namespace komp.Controllers
             }
             return RedirectToAction("ItemList");
         }
-        public ActionResult Filter()
+        public ActionResult Filter(int value)
         {
+            var cc = EnumHelper.GetSelectList(typeof(enumItemType))[value].Text;
+
             var db = new ApplicationDbItem();
             var list = db.GetItems(10000);
             return View("~/Views/Home/ItemList.cshtml", list);
