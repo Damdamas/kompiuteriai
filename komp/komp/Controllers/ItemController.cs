@@ -92,7 +92,7 @@ namespace komp.Controllers
         public ActionResult ItemList()
         {
             var db = new ApplicationDbItem();
-            var list = db.GetItems(10);
+            var list = db.GetItems(1000);
             return View("~/Views/Home/ItemList.cshtml",list);
         }
 
