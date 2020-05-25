@@ -70,6 +70,8 @@
     }
     else if (Session["Role"].Equals(Role.Admin))
     {
+        <p>matomumas: @Model.matomas</p>
+        <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", Model)'" />
         <input type="button" value="Redaguoti prekę &raquo;" onclick="location.href = '@Url.Action("EditItemIndex", "Item", @Model)'" />
     }
     @{
@@ -91,7 +93,7 @@
                     }
                     else
                     {
-                        <img style="filter: grayscale(100%)" src="~/Assets/images/Items/@Model.path">
+                        <img style="filter: grayscale(100%);width: 200px;height: 200px;" src="~/Assets/images/Items/@Model.path">
                         <div class="centered">Nematoma</div>
                     }
                 }
@@ -147,8 +149,6 @@
 
         if (Session["Role"].Equals(Role.Admin))
         {
-            <p>matomumas: @Model.matomas</p>
-            <input type="button" value="Keisti matomumą &raquo;" onclick="location.href = '@Url.Action("DisableItem", "Item", Model)'" />
             Html.RenderPartial("~/Views/Comment/NewComment.cshtml", new Comment(), new ViewDataDictionary { { "itemId", Model.id }, { "userId", ((User)Session["User"]).id }, { "comment", new Comment() } });
         }
         else if (Session["Role"].Equals(Role.User))
