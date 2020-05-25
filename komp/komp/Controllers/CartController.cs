@@ -26,6 +26,12 @@ namespace komp.Controllers
         }
         public ActionResult CompleteBuy(Order order)
         {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Klaidingi duomenys!");
+                return View("~/Views/Cart/Purchase.cshtml",order);
+            }
+
             var db = new ApplicationDbCart();
             var dbOrder = new ApplicationDbOrder();
             Cart crt = (Cart)Session["Cart"];
