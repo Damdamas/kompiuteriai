@@ -9,6 +9,7 @@
         white-space: nowrap;
         overflow-x: auto;
         overflow-y: hidden;
+        word-break:break-all;
     }
 
     .header {
@@ -34,13 +35,16 @@
     .childline1 {
         display: inline-block;
         width: 50%;
-        height: 25%;
+        height: 10%;
+        word-wrap:break-word;
+        white-space: normal;
     }
 
     .childline2 {
         display: inline-block;
         width: 25%;
         height: 25%;
+        padding-left:10px;
     }
 
     .childline3 {
@@ -81,7 +85,7 @@
             <hr class="hr" />
             foreach (var item in Model.prekes)
             {
-                <li style="display:block; padding:10px;">
+                <li style="display:block; padding:10px; word-wrap:break-word;">
 
                     @if ((Session["Role"] is null))
                     {
