@@ -30,7 +30,11 @@ namespace komp.Controllers
         }
         public ActionResult CreateItem(Item item)
         {
-
+            if(!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Klaidingi duomenys!");
+                return View("~/Views/Home/NewItem.cshtml");
+            }
             string path = "";
             string imgpath = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString() + ".jpg";
             try

@@ -21,7 +21,7 @@ namespace komp.Models
         public string pavadinimas { get; set; }
 
 
-
+        [Required]
         public float kaina { get; set; }
 
 
@@ -40,7 +40,6 @@ namespace komp.Models
 
         [NotMapped]
         public HttpPostedFileBase itemPath { get; set; }
-
 
         public bool matomas { get; set; }
     }
